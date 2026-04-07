@@ -17,7 +17,6 @@ While exporting users from groups, the CSV file was generated but contained no d
 
 ### Error Observed
 
-
 ### Fix / Approach
 - Verified group name and existence
 - Ensured correct retrieval of GroupId using:
