@@ -16,3 +16,10 @@ While exporting users from groups, the CSV file was generated but contained no d
 - Script failed to fetch group members
 
 ### Error Observed
+
+
+### Fix / Approach
+- Verified group name and existence
+- Ensured correct retrieval of GroupId using:
+```powershell
+Get-MgGroup -Filter "displayName eq 'GROUP_NAME'"
