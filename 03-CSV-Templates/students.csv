@@ -1,3 +1,2 @@
-#example csv format
-DisplayName,UPN,Grade,Division
-John Doe,gr1a001@domain.com,1,A
+DisplayName,UPN,Grade,Division,employeeType
+John Doe,gr1a001@domain.com,1,A,Student
