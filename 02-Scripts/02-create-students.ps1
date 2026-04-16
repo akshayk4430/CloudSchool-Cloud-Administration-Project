@@ -1,24 +1,42 @@
 # 02-create-students.ps1
 
-$students = Import-Csv ".\data\students.csv"
+param(
+       [string]$CsvPath = ".\03-CSV-Templates\students.csv"
+)
+$students = Import-Csv $CsvPath -Delimiter ','
+
+$results = @()
 
 foreach ($student in $students) {
+	
+	Write-Host "Processing $($student.DisplayName)"
 
-    $passwordProfile = @{
-        Password = "P@ssw0rd123!"
-        ForceChangePasswordNextSignIn = $true
-    }
+	$user = @{DisplayName = "Wrong Name"}
 
-    New-MgUser -DisplayName $student.DisplayName `
-        -UserPrincipalName $student.UPN `
-        -AccountEnabled $true `
-        -MailNickname ($student.UPN.Split("@")[0]) `
-        -PasswordProfile $passwordProfile `
-        -AdditionalProperties @{
-            "extensionAttribute1" = $student.Grade
-            "extensionAttribute2" = $student.Division
-            "employeeType" = "Student"
-        }
+	if (-not $user) {
+		$action = "Create"
+		$notes = "User does not exist"
+	}
+	else{
+		if ($user.DisplayName -ne $student.DisplayName){
+			
+			$action = "Update"
+			$notes = "DisplayName Mismatch"
+		}
+		else {
+			$action = "Skip"
+			$notes = "Already Correct"
+		}
+	}
 
-    Write-Host "Created student: $($student.DisplayName)"
+	$results +=[pscustomobject]@{
+		UserPrincipalName = $student.UserPrincipalName
+		DisplayName	  = $student.DisplayName
+		Action		  = $action
+		Status		  = "Success"
+		Notes		  = $notes
+	}
 }
+
+$results | Export-Csv ".\05-Outputs\students-test-results.csv"	-NoTypeInformation
+Write-Host "Script completed. Results exported." -ForegroundColor Green	
