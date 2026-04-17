@@ -1,4 +1,4 @@
-"UserPrincipalName,DisplayName,GivenName,Surname,MailNickname,Department,EmployeeType,UsageLocation,ExtensionAttribute1,ExtensionAttribute2"
-"std1a001@cloudschool.ink,Rahul Nair,Rahul,Nair,std1a001,Grade1,Student,AE,Grade1,A"
-"std1a002@cloudschool.ink,Amina Khan,Amina,Khan,std1a002,Grade1,Student,AE,Grade1,A"
-"std1b001@cloudschool.ink,Omar Ali,Omar,Ali,std1b001,Grade1,Student,AE,Grade1,B"
+UserPrincipalName,DisplayName,GivenName,Surname,MailNickname,Department,EmployeeType,UsageLocation,ExtensionAttribute1,ExtensionAttribute2
+std01a001@cloudschool.ink,Albin D'Souza,Albin,D'Souza,std01a001,Grade1,Student,AE,Grade01,DivisionA
+std01a002@cloudschool.ink,Tejas Iyer,Tejas,Iyer,std01a002,Grade1,Student,AE,Grade01,DivisionA
+std01a003@cloudschool.ink,Mukesh Mishra,Mukesh,Mishra,std01a003,Grade1,Student,AE,Grade01,DivisionA
