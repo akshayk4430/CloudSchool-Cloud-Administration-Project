@@ -22,7 +22,7 @@ The goal is to create a fully documented and automated cloud setup that reflects
 ## 🏫 Organization Structure (CloudSchool)
 This project includes:
 - **Students:** 500 accounts
-- **Staff:** 50 accounts
+- **Staff:** 54 accounts
 - **Grades:** 1 to 6
 - **Divisions:** A, B, C
 
