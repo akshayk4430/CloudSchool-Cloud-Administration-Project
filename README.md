@@ -9,20 +9,23 @@ The goal is to create a fully documented and automated cloud setup that reflects
 ---
 
 ## 🎯 Project Goals
-- Build a realistic school tenant in **Microsoft 365 + Entra ID**
-- Automate bulk user and group provisioning using **PowerShell**
-- Implement structured identity and access management (IAM)
-- Apply AZ-104 infrastructure concepts (networking, compute, storage, monitoring)
-- Build security baselines (MFA, Conditional Access, RBAC)
-- Maintain full documentation as a real cloud admin would do
-- Create a GitHub portfolio project for interview readiness
+
+- Build a realistic school tenant in Microsoft 365 + Entra ID
+- Implement structured identity management for students and staff
+- Automate provisioning using CSV-driven PowerShell workflows
+- Build idempotent scripts supporting create, update, and skip logic
+- Apply attribute-based identity classification (employeeType, extension attributes)
+- Design scalable group structures for grade and department management
+- Implement administrative units for organizational control
+- Maintain production-style documentation and version control using GitHub
+- Create an interview-ready cloud administration portfolio project
 
 ---
 
 ## 🏫 Organization Structure (CloudSchool)
 This project includes:
 - **Students:** 500 accounts
-- **Staff:** 54 accounts
+- **Staff:** 55 accounts
 - **Grades:** 1 to 6
 - **Divisions:** A, B, C
 
@@ -30,13 +33,36 @@ This project includes:
 
 ## ✅ Completed Work (Current Progress)
 
+
 ### 1. Custom Domain Setup
 - Domain configured and verified: `cloudschool.ink`
 - User Principal Names (UPN) standardized to use the custom domain
 
-### 2. User Provisioning (Bulk Creation)
-- 500 student accounts created using PowerShell automation
-- 50 staff accounts created using PowerShell automation
+### 2. Identity Provisioning (Students & Staff)
+- Provisioning is implemented using CSV-driven PowerShell automation with idempotent create/update/skip logic.
+
+#### Student Provisioning
+- 500 student accounts created using structured CSV input
+- Script supports create, update, and skip operations
+- Grade and division are applied using extension attributes
+
+#### Staff Provisioning
+Staff provisioning was redesigned into a structured workflow:
+
+- Data cleanup and normalization (`08-build-staff-csv.ps1`)
+- Attribute mapping (`staff-attributes.csv`)
+- Dataset merge (`09-merge-staff-csv.ps1`)
+- Final provisioning (`03-create-staff.ps1`)
+
+The staff provisioning script:
+- creates missing users
+- updates only changed fields
+- applies extension attributes (Role and Assignment)
+- skips already-correct users on rerun
+
+This ensures safe, repeatable automation aligned with real-world practices.
+
+- exports provisioning results for validation (`staff-provisioning-results.csv`)
 
 ### 3. Group Design and Implementation
 Student groups are created based on grade and division:
@@ -67,14 +93,27 @@ To maintain identity structure and easy filtering:
 | Attribute | Usage |
 |----------|--------|
 | employeeType | Staff / student |
-| extensionAttribute1 | Grade |
-| extensionAttribute2 | Division |
+| extensionAttribute1 | Student: Grade / Staff: Role |
+| extensionAttribute2 | Student: Division / Staff: Assignment |
 
 employeeType values:
 - Staff = `Staff`
 - Student = `student`
 
 ---
+## ⚙️ Provisioning Model
+
+The provisioning system is designed as a reusable pipeline:
+
+- CSV as source of truth
+- Separation of identity data and business logic
+- Dynamic comparison of existing users
+- Update only when changes are detected
+- Idempotent script execution (safe re-runs)
+- Minimizes unnecessary Microsoft Graph API calls
+
+This approach reduces unnecessary API calls and ensures consistency across large datasets.
+
 
 ## 🛠 Tools Used
 - Microsoft Entra ID (Azure AD)
@@ -92,6 +131,6 @@ employeeType values:
 03-CSV-Templates/     -> Input templates used for bulk provisioning
 04-Screenshots/       -> Portal screenshots for proof and reference
 05-Outputs/           -> Export reports and validation results
+```
 
-Edited
 
