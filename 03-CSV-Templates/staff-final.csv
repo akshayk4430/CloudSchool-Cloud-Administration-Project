@@ -1,0 +1,56 @@
+UserPrincipalName,DisplayName,GivenName,Surname,MailNickname,Department,EmployeeType,UsageLocation,ExtensionAttribute1,ExtensionAttribute2
+abdul.rasheed@cloudschool.ink,Mr. Abdul Rasheed,Abdul,Rasheed,abdul.rasheed,Operations,Staff,AE,DeptHead,Operations
+aishwarya.pillai@cloudschool.ink,Ms. Aishwarya Pillai,Aishwarya,Pillai,aishwarya.pillai,Activities,Staff,AE,ClassTeacher,Grade5B
+ajith.kumar@cloudschool.ink,Mr. Ajith Kumar,Ajith,Kumar,ajith.kumar,Lab,Staff,AE,DeptHead,Lab
+akhil.raj@cloudschool.ink,Mr. Akhil Raj,Akhil,Raj,akhil.raj,IT,Staff,AE,Staff,IT
+amal.joseph@cloudschool.ink,Mr. Amal Joseph,Amal,Joseph,amal.joseph,Administration,Staff,AE,DeptHead,Administration
+ananya.krishnan@cloudschool.ink,Ms. Ananya Krishnan,Ananya,Krishnan,ananya.krishnan,Academics,Staff,AE,ClassTeacher,Grade2C
+anitha.menon@cloudschool.ink,Dr. Anitha Menon,Anitha,Menon,anitha.menon,Management,Staff,AE,Principal,Management
+anjali.sreenivasan@cloudschool.ink,Ms. Anjali Sreenivasan,Anjali,Sreenivasan,anjali.sreenivasan,Sports,Staff,AE,Staff,Sports
+aparna.rajan@cloudschool.ink,Ms. Aparna Rajan,Aparna,Rajan,aparna.rajan,Academics,Staff,AE,GradeCoordinator,Grade3A
+arun.nambiar@cloudschool.ink,Mr. Arun Nambiar,Arun,Nambiar,arun.nambiar,Academics,Staff,AE,GradeCoordinator,Grade1A
+asha.ramesh@cloudschool.ink,Ms. Asha Ramesh,Asha,Ramesh,asha.ramesh,Administration,Staff,AE,GradeCoordinator,Grade5A
+basheer.ahmed@cloudschool.ink,Mr. Basheer Ahmed,Basheer,Ahmed,basheer.ahmed,Transport,Staff,AE,DeptHead,Transport
+deepa.varma@cloudschool.ink,Ms. Deepa Varma,Deepa,Varma,deepa.varma,Management,Staff,AE,HeadOfAdministration,Management
+dinesh.kumar@cloudschool.ink,Mr. Dinesh Kumar,Dinesh,Kumar,dinesh.kumar,Library,Staff,AE,Staff,Library
+divya.prasad@cloudschool.ink,Ms. Divya Prasad,Divya,Prasad,divya.prasad,Academics,Staff,AE,ClassTeacher,Grade1B
+farzana.ali@cloudschool.ink,Ms. Farzana Ali,Farzana,Ali,farzana.ali,Medical,Staff,AE,DeptHead,Medical
+fathima.rahman@cloudschool.ink,Ms. Fathima Rahman,Fathima,Rahman,fathima.rahman,Student Support,Staff,AE,ClassTeacher,Grade6C
+hari.prakash@cloudschool.ink,Mr. Hari Prakash,Hari,Prakash,hari.prakash,Lab,Staff,AE,Staff,Lab
+harish.rangan@cloudschool.ink,Mr. Harish Rangan,Harish,Rangan,harish.rangan,Accounts,Staff,AE,DeptHead,Accounts
+jincy.thomas@cloudschool.ink,Ms. Jincy Thomas,Jincy,Thomas,jincy.thomas,Lab,Staff,AE,Staff,Lab
+jithin.varghese@cloudschool.ink,Mr. Jithin Varghese,Jithin,Varghese,jithin.varghese,Student Support,Staff,AE,DeptHead,StudentSupport
+joel.mathew@cloudschool.ink,Mr. Joel Mathew,Joel,Mathew,joel.mathew,IT,Staff,AE,Staff,IT
+kavya.suresh@cloudschool.ink,Ms. Kavya Suresh,Kavya,Suresh,kavya.suresh,Academics,Staff,AE,ClassTeacher,Grade2B
+keerthi.pillai@cloudschool.ink,Ms. Keerthi Pillai,Keerthi,Pillai,keerthi.pillai,Academics,Staff,AE,ClassTeacher,Grade4B
+latha.krishnan@cloudschool.ink,Ms. Latha Krishnan,Latha,Krishnan,latha.krishnan,HR,Staff,AE,DeptHead,HR
+leena.mathew@cloudschool.ink,Ms. Leena Mathew,Leena,Mathew,leena.mathew,Medical,Staff,AE,Staff,Medical
+manu.narayanan@cloudschool.ink,Mr. Manu Narayanan,Manu,Narayanan,manu.narayanan,Academics,Staff,AE,GradeCoordinator,Grade2A
+meera.sanjay@cloudschool.ink,Ms. Meera Sanjay,Meera,Sanjay,meera.sanjay,IT,Staff,AE,Staff,IT
+mithun.raj@cloudschool.ink,Mr. Mithun Raj,Mithun,Raj,mithun.raj,Activities,Staff,AE,DeptHead,Activities
+naveen.das@cloudschool.ink,Mr. Naveen Das,Naveen,Das,naveen.das,Transport,Staff,AE,Staff,Transport
+neethu.thomas@cloudschool.ink,Ms. Neethu Thomas,Neethu,Thomas,neethu.thomas,Administration,Staff,AE,GradeCoordinator,Grade6A
+nisha.babu@cloudschool.ink,Ms. Nisha Babu,Nisha,Babu,nisha.babu,Accounts,Staff,AE,Staff,Accounts
+praveen.nair@cloudschool.ink,Mr. Praveen Nair,Praveen,Nair,praveen.nair,Sports,Staff,AE,DeptHead,Sports
+preethi.nair@cloudschool.ink,Ms. Preethi Nair,Preethi,Nair,preethi.nair,Academics,Staff,AE,ClassTeacher,Grade1C
+priya.mohan@cloudschool.ink,Ms. Priya Mohan,Priya,Mohan,priya.mohan,HR,Staff,AE,Staff,HR
+rahul.dev@cloudschool.ink,Mr. Rahul Dev,Rahul,Dev,rahul.dev,IT,Staff,AE,Staff,IT
+rajeev.nair@cloudschool.ink,Mr. Rajeev Nair,Rajeev,Nair,rajeev.nair,Management,Staff,AE,VicePrincipal,Management
+rakesh.sharma@cloudschool.ink,Mr. Rakesh Sharma,Rakesh,Sharma,rakesh.sharma,Administration,Staff,AE,GradeCoordinator,Grade4A
+rekha.nair@cloudschool.ink,Ms. Rekha Nair,Rekha,Nair,rekha.nair,Accounts,Staff,AE,Staff,Accounts
+reshma.nair@cloudschool.ink,Ms. Reshma Nair,Reshma,Nair,reshma.nair,Academics,Staff,AE,ClassTeacher,Grade3B
+riya.george@cloudschool.ink,Ms. Riya George,Riya,George,riya.george,Student Support,Staff,AE,Staff,StudentSupport
+riyaz.khan@cloudschool.ink,Mr. Riyaz Khan,Riyaz,Khan,riyaz.khan,Sports,Staff,AE,Staff,Sports
+roshan.mathew@cloudschool.ink,Mr. Roshan Mathew,Roshan,Mathew,roshan.mathew,Academics,Staff,AE,ClassTeacher,Grade3C
+santhosh.menon@cloudschool.ink,Mr. Santhosh Menon,Santhosh,Menon,santhosh.menon,Accounts,Staff,AE,Staff,Accounts
+shalini.krishnan@cloudschool.ink,Ms. Shalini Krishnan,Shalini,Krishnan,shalini.krishnan,Management,Staff,AE,SchoolCounsellorHead,Management
+shruthi.nair@cloudschool.ink,Ms. Shruthi Nair,Shruthi,Nair,shruthi.nair,Activities,Staff,AE,ClassTeacher,Grade6B
+sidharth.menon@cloudschool.ink,Mr. Sidharth Menon,Sidharth,Menon,sidharth.menon,Activities,Staff,AE,ClassTeacher,Grade4C
+sneha.iyer@cloudschool.ink,Ms. Sneha Iyer,Sneha,Iyer,sneha.iyer,Library,Staff,AE,DeptHead,Library
+sunil.kumar@cloudschool.ink,Mr. Sunil Kumar,Sunil,Kumar,sunil.kumar,Transport,Staff,AE,Staff,Transport
+suresh.pillai@cloudschool.ink,Mr. Suresh Pillai,Suresh,Pillai,suresh.pillai,Management,Staff,AE,ChiefAcademicOfficer,Management
+swetha.balakrishnan@cloudschool.ink,Ms. Swetha Balakrishnan,Swetha,Balakrishnan,swetha.balakrishnan,Student Support,Staff,AE,ClassTeacher,Grade5C
+thomas.antony@cloudschool.ink,Mr. Thomas Antony,Thomas,Antony,thomas.antony,Operations,Staff,AE,Staff,Operations
+vinod.kumar@cloudschool.ink,Mr. Vinod Kumar,Vinod,Kumar,vinod.kumar,Operations,Staff,AE,Staff,Operations
+vishnu.prakash@cloudschool.ink,Mr. Vishnu Prakash,Vishnu,Prakash,vishnu.prakash,IT,Staff,AE,Staff,IT
+vivek.menon@cloudschool.ink,Mr. Vivek Menon,Vivek,Menon,vivek.menon,IT,Staff,AE,Staff,IT

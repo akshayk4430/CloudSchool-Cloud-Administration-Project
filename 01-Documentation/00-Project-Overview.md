@@ -30,7 +30,7 @@ cloudschool.ink
 
 ### Users
 - Students: 500
-- Staff: 50
+- Staff: 55
 
 ### Structure
 - Grades: 1 to 6
@@ -42,11 +42,36 @@ cloudschool.ink
 
 The environment is designed with a focus on:
 
+## Staff Provisioning
+
+The staff provisioning phase was rebuilt into a structured, reusable workflow instead of one-time scripts.
+
+The implementation includes:
+
+1. Cleaning exported identity data
+2. Maintaining separate role and assignment mapping
+3. Merging datasets into a final source-of-truth CSV
+4. Running an idempotent provisioning script
+
+The workflow uses:
+
+- `08-build-staff-csv.ps1`
+- `09-merge-staff-csv.ps1`
+- `03-create-staff.ps1`
+
+This approach ensures:
+
+- new users are created
+- existing users are updated only when changes are detected
+- already correct users are skipped
+- extension attributes are applied consistently
+
 ### 1. Scalability
 - Group structure allows easy expansion (more grades/divisions can be added)
 
 ### 2. Automation
-- Bulk user creation and group assignments are done using PowerShell
+- Student provisioning (idempotent CSV-driven automation)
+- Staff provisioning (create/update/skip with attribute mapping and extension attributes)
 
 ### 3. Standardization
 - Consistent naming conventions for users and groups

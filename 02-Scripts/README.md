@@ -1,111 +1,141 @@
-# 🎓 CloudSchool – Azure AD User & Group Automation (AZ-104)
+# ⚙️ Scripts – CloudSchool Automation
 
-## 📌 Project Overview
+## 📌 Overview
 
-This project simulates a real-world **school environment** where user lifecycle management is automated using **PowerShell and Microsoft Graph**.
+This folder contains all PowerShell scripts used to automate identity provisioning and management in the CloudSchool environment.
 
-As a Cloud Administrator, the goal is to:
+The scripts follow a structured, CSV-driven approach with idempotent logic to support:
 
-* Create users in bulk (Students & Staff)
-* Assign attributes based on organizational structure
-* Automatically map users to appropriate groups
-
----
-
-## 🧱 Architecture Design
-
-### 👨‍🎓 Students
-
-| Attribute           | Value                          |
-| ------------------- | ------------------------------ |
-| DisplayName         | Student Name                   |
-| UPN                 | gr{grade}{division}{id}@domain |
-| extensionAttribute1 | Grade                          |
-| extensionAttribute2 | Division                       |
-| employeeType        | Student                        |
+* Create
+* Update
+* Skip
+* Safe re-runs without duplication
 
 ---
 
-### 👨‍🏫 Staff
+## 🧱 Provisioning Model
 
-| Attribute    | Value              |
-| ------------ | ------------------ |
-| DisplayName  | Staff Name         |
-| UPN          | staffname@domain   |
-| Department   | IT / HR / Teachers |
-| employeeType | Staff              |
+The automation is built as a pipeline:
 
----
-
-## 👥 Group Design
-
-### Student Groups
-
-* GRP-Grade1-A
-* GRP-Grade1-B
-
-### Staff Groups
-
-* GRP-IT
-* GRP-Teachers
-* GRP-Staff-All
+1. Prepare identity data (CSV)
+2. Maintain attribute mapping separately
+3. Merge datasets into a final source-of-truth file
+4. Run provisioning scripts with comparison logic
 
 ---
 
-## ⚙️ Automation Workflow
+## 🔄 Execution Order
 
-1. Connect to Microsoft Graph
-2. Create Student Users (Bulk via CSV)
-3. Create Staff Users (Bulk via CSV)
-4. Assign Users to Groups dynamically based on attributes
+### 🔹 Step 1 – Connect to Microsoft Graph
 
----
+```powershell
+01-connect-mggraph.ps1
+```
 
-## 📂 Scripts Overview
-
-### 🔹 01-connect-mggraph.ps1
-
-Connects to Microsoft Graph with required permissions.
-
-### 🔹 02-create-students.ps1
-
-Creates student accounts and assigns:
-
-* Grade
-* Division
-* employeeType
-
-### 🔹 03-create-staff.ps1
-
-Creates staff accounts with department mapping.
-
-### 🔹 04-assign-groups.ps1
-
-Assigns users to groups dynamically:
-
-* Students → Grade/Division Groups
-* Staff → Department Groups
+* Authenticates to Microsoft Graph
+* Ensure correct permissions and test in a non-production environment before full execution
 
 ---
 
-## 🚀 Key Features
+### 🔹 Step 2 – Student Provisioning
 
-* Bulk user creation using CSV
-* Attribute-driven identity management
-* Scalable group assignment logic
-* Real-world naming conventions
+```powershell
+02-create-students.ps1
+```
+
+* Reads from `students.csv`
+* Creates new users
+* Updates existing users if changes detected
+* Applies:
+
+  * Grade (`ExtensionAttribute1`)
+  * Division (`ExtensionAttribute2`)
+* Skips users already in correct state
 
 ---
 
-## 🧠 Future Improvements
+### 🔹 Step 3 – Staff Data Preparation
 
-* Implement Dynamic Groups
-* Add Role-Based Access Control (RBAC)
-* Integrate with Azure Automation
+```powershell
+08-build-staff-csv.ps1
+```
+
+* Cleans raw export data
+* Fixes missing names
+* Standardizes attributes
+* Output: `staff.csv`
 
 ---
 
-## 📎 Author
+### 🔹 Step 4 – Staff Attribute Merge
 
-Cloud Administrator Project for AZ-104 Certification
+```powershell
+09-merge-staff-csv.ps1
+```
 
+* Merges:
+
+  * identity data (`staff.csv`)
+  * attribute mapping (`staff-attributes.csv`)
+* Output: `staff-final.csv`
+
+---
+
+### 🔹 Step 5 – Staff Provisioning
+
+```powershell
+03-create-staff.ps1
+```
+
+* Reads from `staff-final.csv`
+* Creates missing users
+* Compares existing users
+* Updates only changed fields
+* Applies:
+
+  * `ExtensionAttribute1` (Role)
+  * `ExtensionAttribute2` (Assignment)
+* Skips already-correct users
+* Exports results to `staff-provisioning-results.csv`
+
+---
+
+### 🔹 Step 6 – Group Assignment
+
+```powershell
+04-assign-groups.ps1
+```
+
+* Assigns users to groups based on attributes
+* Students → Grade/Division groups
+* Staff → Department groups
+
+---
+
+### 🔹 Step 7 – Administrative Units
+
+```powershell
+05-create-administrative-units.ps1
+```
+
+* Creates Administrative Units (AUs)
+* Supports logical delegation and segmentation
+
+---
+
+## 📊 Key Features
+
+* CSV-driven identity management
+* Idempotent provisioning logic
+* Dynamic comparison before update
+* Extension attribute handling for classification
+* Separation of identity and business logic
+* Reduced unnecessary Microsoft Graph API calls
+
+---
+
+## ⚠️ Notes
+
+* Scripts are designed for safe re-execution
+* Always test with a small dataset before full run
+* CSV files act as the source of truth
