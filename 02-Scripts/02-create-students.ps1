@@ -10,8 +10,9 @@ updates mismatched users, skips matching users, and logs results to CSV.
 Safe to re-run. Idempotent.
 #>
 
-param(
-       [string]$CsvPath = ".\03-CSV-Templates\students.csv"
+param (
+       [string]$CsvPath = ".\03-CSV-Templates\students.csv",
+	   [string]$OutputPath = ".\05-Outputs\students-results.csv"
 )
 $students = Import-Csv $CsvPath -Delimiter ','
 
@@ -26,8 +27,31 @@ foreach ($student in $students) {
 # 		-ErrorAction SilentlyContinue
 
 	if (-not $user) {
-		$action = "Create"
-		$notes = "User does not exist"
+            $passwordProfile = @{
+                Password = "CloudSchool@12345"
+                ForceChangePasswordNextSignIn = $true
+            }
+
+            New-MgUser `
+                -AccountEnabled `
+                -DisplayName $student.DisplayName `
+                -GivenName $student.GivenName `
+                -Surname $student.Surname `
+                -UserPrincipalName $student.UserPrincipalName `
+                -MailNickname $student.MailNickname `
+                -Department $student.Department `
+                -EmployeeType $student.EmployeeType `
+                -UsageLocation $student.UsageLocation `
+                -PasswordProfile $passwordProfile `
+                -OnPremisesExtensionAttributes @{
+                    ExtensionAttribute1 = $student.ExtensionAttribute1
+                    ExtensionAttribute2 = $student.ExtensionAttribute2
+                } `
+                -ErrorAction Stop
+
+            $action = "Create"
+            $status = "Success"
+            $notes = "User created"
 	}
 	else {
     $changes = @()
@@ -122,6 +146,7 @@ foreach ($student in $students) {
     }
     else {
         $action = "Skip"
+		$status = "Success"
         $notes = "Already Correct"
     }
 }
@@ -130,10 +155,11 @@ foreach ($student in $students) {
 		UserPrincipalName = $student.UserPrincipalName
 		DisplayName	  = $student.DisplayName
 		Action		  = $action
-		Status		  = "Success"
+		Status		  = $status
 		Notes		  = $notes
 	}
 }
 
-$results | Export-Csv ".\05-Outputs\students-test-results.csv"	-NoTypeInformation
-Write-Host "Script completed. Results exported." -ForegroundColor Green	
+$results | Export-Csv $OutputPath	-NoTypeInformation
+Write-Host "Student provisioning completed." -ForegroundColor Green
+Write-Host "Results exported to $OutputPath" -ForegroundColor Green
