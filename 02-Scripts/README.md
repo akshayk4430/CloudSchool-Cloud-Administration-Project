@@ -33,7 +33,7 @@ The automation is built as a pipeline:
 ```
 
 * Authenticates to Microsoft Graph
-* Ensure correct permissions and test in a non-production environment before full execution
+* Ensure correct permissions before execution
 
 ---
 
@@ -75,8 +75,8 @@ The automation is built as a pipeline:
 
 * Merges:
 
-  * identity data (`staff.csv`)
-  * attribute mapping (`staff-attributes.csv`)
+  * `staff.csv`
+  * `staff-attributes.csv`
 * Output: `staff-final.csv`
 
 ---
@@ -89,37 +89,66 @@ The automation is built as a pipeline:
 
 * Reads from `staff-final.csv`
 * Creates missing users
-* Compares existing users
 * Updates only changed fields
 * Applies:
 
-  * `ExtensionAttribute1` (Role)
-  * `ExtensionAttribute2` (Assignment)
+  * Role (`ExtensionAttribute1`)
+  * Assignment (`ExtensionAttribute2`)
 * Skips already-correct users
-* Exports results to `staff-provisioning-results.csv`
+* Outputs: `staff-provisioning-results.csv`
 
 ---
 
-### 🔹 Step 6 – Group Assignment
+### 🔹 Step 6 – Group Creation
 
 ```powershell
-04-assign-groups.ps1
+04-Create-Groups.ps1
 ```
 
-* Assigns users to groups based on attributes
-* Students → Grade/Division groups
-* Staff → Department groups
+* Reads from `groups-required.csv`
+* Creates missing groups
+* Skips existing groups
+* Idempotent design
 
 ---
 
-### 🔹 Step 7 – Administrative Units
+### 🔹 Step 7 – Group Assignment
 
 ```powershell
-05-create-administrative-units.ps1
+05-Assign-Users-To-Groups.ps1
 ```
 
-* Creates Administrative Units (AUs)
-* Supports logical delegation and segmentation
+* Assigns users based on attributes
+
+Student logic:
+
+* Grade → `GRP-Student-Grade-*`
+* Division → `GRP-Student-Grade-*-*`
+* License → `GRP-M365-License-Students`
+* Policy → `GRP-Policy-CA-Students`
+
+Staff logic:
+
+* All → `GRP-Staff-All`
+* Department → `GRP-Staff-*`
+* License → `GRP-M365-License-Staff`
+* Policy → `GRP-Policy-CA-Staff`
+
+Role logic:
+
+* ExtensionAttribute1 → Role groups
+* Department → Teachers / IT Admins
+
+---
+
+### 🔹 Step 8 – Administrative Units
+
+```powershell
+06-create-administrative-units.ps1
+```
+
+* Creates Administrative Units
+* Supports delegation and RBAC
 
 ---
 
@@ -128,14 +157,14 @@ The automation is built as a pipeline:
 * CSV-driven identity management
 * Idempotent provisioning logic
 * Dynamic comparison before update
-* Extension attribute handling for classification
-* Separation of identity and business logic
-* Reduced unnecessary Microsoft Graph API calls
+* Extension attribute classification
+* Separation of identity and logic
+* Optimized Microsoft Graph usage
 
 ---
 
 ## ⚠️ Notes
 
-* Scripts are designed for safe re-execution
-* Always test with a small dataset before full run
-* CSV files act as the source of truth
+* Scripts are safe for re-execution
+* Always test with small dataset
+* CSV files act as source of truth
