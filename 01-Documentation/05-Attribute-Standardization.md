@@ -1,6 +1,3 @@
-
----
-
 # Attribute Standardization
 
 ## Objective
@@ -265,5 +262,3 @@ Attribute standardization ensures:
 * The environment is scalable and production-ready
 
 This is a core foundation for CloudSchool identity and access management.
-
----
