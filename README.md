@@ -72,7 +72,7 @@ Group lifecycle management is implemented using a structured, automated approach
 
 All groups follow:
 
-GRP-<Type>-<Logical Unit>
+`GRP-<Type>-<Logical Unit>`
 ---
 
 ### Group Categories
@@ -86,10 +86,10 @@ Based on structure:
 
 Examples:
 
-- GRP-Student-Grade-01  
-- GRP-Student-Grade-01-A  
-- GRP-Staff-IT  
-- GRP-Staff-Operations  
+`- GRP-Student-Grade-01`  
+`- GRP-Student-Grade-01-A`  
+`- GRP-Staff-IT  `
+`- GRP-Staff-Operations ` 
 
 ---
 
