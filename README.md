@@ -86,10 +86,10 @@ Based on structure:
 
 Examples:
 
-`- GRP-Student-Grade-01`  
-`- GRP-Student-Grade-01-A`  
-`- GRP-Staff-IT  `
-`- GRP-Staff-Operations ` 
+- `GRP-Student-Grade-01`  
+- `GRP-Student-Grade-01-A`  
+- `GRP-Staff-IT  `
+- `GRP-Staff-Operations ` 
 
 ---
 
