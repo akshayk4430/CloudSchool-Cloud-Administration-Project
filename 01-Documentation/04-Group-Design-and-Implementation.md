@@ -1,4 +1,6 @@
-````markdown
+
+---
+
 # Group Design and Implementation
 
 ## Objective
@@ -15,7 +17,7 @@ All groups follow this standard:
 
 ```text
 GRP-<EmployeeType>-<Logical Unit>
-````
+```
 
 Examples:
 
@@ -50,8 +52,6 @@ Student groups are based on grade and division.
 
 ### Grade-Level Groups
 
-Each grade has one grade-level group:
-
 ```text
 GRP-Student-Grade-01
 GRP-Student-Grade-02
@@ -62,8 +62,6 @@ GRP-Student-Grade-06
 ```
 
 ### Division-Level Groups
-
-Each grade has three division-level groups:
 
 ```text
 GRP-Student-Grade-01-A
@@ -91,11 +89,7 @@ Staff groups are based on department.
 GRP-Staff-All
 ```
 
-This group contains all staff users.
-
 ### Department Groups
-
-Examples:
 
 ```text
 GRP-Staff-IT
@@ -105,19 +99,11 @@ GRP-Staff-Academics
 GRP-Staff-Student_Support
 ```
 
-Department names are standardized to align with group naming. Spaces are replaced with underscores where required.
-
-Example:
-
-```text
-Student Support → Student_Support
-```
+Department names are standardized (spaces replaced with underscores).
 
 ---
 
 ## Identity Attribute Alignment
-
-Group assignment is based on the following Entra ID attributes:
 
 ### Students
 
@@ -134,12 +120,7 @@ ExtensionAttribute1 = Grade01
 ExtensionAttribute2 = DivisionA
 ```
 
-Assigned groups:
-
-```text
-GRP-Student-Grade-01
-GRP-Student-Grade-01-A
-```
+---
 
 ### Staff
 
@@ -154,35 +135,27 @@ Example:
 Department = Operations
 ```
 
-Assigned groups:
-
-```text
-GRP-Staff-All
-GRP-Staff-Operations
-```
-
 ---
 
 ## Automation Method
 
-Group assignment is handled by:
-
 ```text
-02-Scripts/04-Assign-Users-To-Groups.ps1
+02-Scripts/04-Create-Groups.ps1 → Creates groups
+02-Scripts/05-Assign-Users-To-Groups.ps1 → Assigns users
 ```
 
-The script is designed to be idempotent.
+Both scripts are idempotent.
 
-It supports:
+Features:
 
-* Adding missing memberships
-* Skipping existing memberships
-* Logging failed assignments
-* Exporting results to CSV
-* Caching groups before processing users
-* Checking membership before adding users
+* Add missing groups/memberships
+* Skip existing ones
+* Log results
+* Export to CSV
+* Cache groups and memberships
+* Prevent duplicate operations
 
-Output file:
+Output:
 
 ```text
 05-Outputs/group-assignment-results.csv
@@ -190,42 +163,131 @@ Output file:
 
 ---
 
+## Group Creation Automation
+
+Script:
+
+```text
+02-Scripts/04-Create-Groups.ps1
+```
+
+Source of truth:
+
+```text
+03-CSV-Templates/groups-required.csv
+```
+
+Features:
+
+* CSV-driven group definition
+* Create / Skip / Failed logic
+* Safe to re-run
+* Output logging
+
+Total groups:
+
+```text
+49 groups
+```
+
+---
+
+## Group Categories
+
+### 1. Organizational Groups
+
+* Student groups (Grade + Division)
+* Staff groups (Department)
+
+---
+
+### 2. Role-Based Groups
+
+```text
+GRP-Role-Teachers
+GRP-Role-ClassTeachers
+GRP-Role-DeptHeads
+GRP-Role-Principal
+GRP-Role-ITAdmins
+```
+
+---
+
+### 3. Service / Policy Groups
+
+```text
+GRP-M365-License-Students
+GRP-M365-License-Staff
+GRP-Policy-CA-Students
+GRP-Policy-CA-Staff
+```
+
+---
+
+## Group Assignment Logic
+
+### Students
+
+```text
+GRP-Student-Grade-*
+GRP-Student-Grade-*-*
+GRP-M365-License-Students
+GRP-Policy-CA-Students
+```
+
+---
+
+### Staff
+
+```text
+GRP-Staff-All
+GRP-Staff-<Department>
+GRP-M365-License-Staff
+GRP-Policy-CA-Staff
+```
+
+---
+
+### Role-Based Assignment
+
+```text
+ExtensionAttribute1 = ClassTeacher      → GRP-Role-ClassTeachers
+ExtensionAttribute1 = GradeCoordinator  → GRP-Role-GradeCoordinators
+ExtensionAttribute1 = DeptHead          → GRP-Role-DeptHeads
+ExtensionAttribute1 = Principal         → GRP-Role-Principal
+Department = Academics                  → GRP-Role-Teachers
+Department = IT                         → GRP-Role-ITAdmins
+```
+
+---
+
+## Idempotent Design
+
+* Create-Groups → Create / Skip / Failed
+* Assign-Users → Add / Skip / Failed
+
+Scripts can be safely re-run without duplication.
+
+---
+
 ## Design Benefits
 
-### 1. Consistent Naming
-
-All group names follow a predictable standard.
-
-### 2. Automation Friendly
-
-The script can calculate memberships directly from user attributes.
-
-### 3. Scalable
-
-New grades, divisions, or departments can be added without redesigning the full structure.
-
-### 4. Policy Ready
-
-Groups can be used later for Microsoft 365, Teams, SharePoint, Conditional Access, licensing, and Azure resource access.
-
-### 5. Idempotent Operations
-
-The script can be safely re-run without duplicating memberships.
+* Consistent naming
+* Automation-friendly
+* Scalable
+* Policy-ready
+* Safe re-execution
 
 ---
 
 ## Summary
 
-The CloudSchool group structure is now standardized around EmployeeType and logical units.
+CloudSchool group design is based on:
 
-Students are grouped by grade and division.
+* Organizational structure
+* Role-based access
+* Service and policy targeting
 
-Staff are grouped by department.
+This enables clean automation, scalable identity management, and real-world alignment with Microsoft 365 and Azure practices.
 
-This structure supports clean automation, access management, and future Microsoft 365 and Azure policy assignments.
-
-```
-
-After saving this file in GitHub, send me the next raw URL for `05-Attribute-Standardization.md`.
-::contentReference[oaicite:0]{index=0}
-```
+---
