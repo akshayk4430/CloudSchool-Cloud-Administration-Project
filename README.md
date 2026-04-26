@@ -65,27 +65,44 @@ This ensures safe, repeatable automation aligned with real-world practices.
 - exports provisioning results for validation (`staff-provisioning-results.csv`)
 
 ### 3. Group Design and Implementation
-Student groups are created based on grade and division:
+
+Group naming is standardized using:
+
+GRP-<EmployeeType>-<Logical Unit>
+
+#### Student Groups
+
+Student groups are based on grade and division:
 
 **Grade-level groups**
-- GRP-Grade-1
-- GRP-Grade-2
-- GRP-Grade-3
-- GRP-Grade-4
-- GRP-Grade-5
-- GRP-Grade-6
+- GRP-Student-Grade-01
+- GRP-Student-Grade-02
+- GRP-Student-Grade-03
+- GRP-Student-Grade-04
+- GRP-Student-Grade-05
+- GRP-Student-Grade-06
 
 **Division-level groups**
-- GRP-Grade-1a, GRP-Grade-1b, GRP-Grade-1c  
-- GRP-Grade-2a, GRP-Grade-2b, GRP-Grade-2c  
+- GRP-Student-Grade-01-A, GRP-Student-Grade-01-B, GRP-Student-Grade-01-C  
+- GRP-Student-Grade-02-A, GRP-Student-Grade-02-B, GRP-Student-Grade-02-C  
 - ...  
-- GRP-Grade-6a, GRP-Grade-6b, GRP-Grade-6c  
+- GRP-Student-Grade-06-A, GRP-Student-Grade-06-B, GRP-Student-Grade-06-C  
 
 Total student groups: **24**
 
-Staff groups:
+#### Staff Groups
+
 - GRP-Staff-All (contains all staff users)
-- Department-based groups (example: IT, Admin, Accounts, etc.)
+- Department-based groups:
+  - GRP-Staff-IT
+  - GRP-Staff-Operations
+  - GRP-Staff-Academics
+  - GRP-Staff-Student_Support
+  - etc.
+
+Note:
+Department values are standardized to match group naming.  
+Spaces are replaced with underscores (e.g., Student Support → Student_Support).
 
 ### 4. Attribute Standardization
 To maintain identity structure and easy filtering:
@@ -98,8 +115,7 @@ To maintain identity structure and easy filtering:
 
 employeeType values:
 - Staff = `Staff`
-- Student = `student`
-
+- Student = `Student`
 ---
 ## ⚙️ Provisioning Model
 
