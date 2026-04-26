@@ -109,7 +109,7 @@ $users = Get-MgUser -All -Property "Id,UserPrincipalName,DisplayName,EmployeeTyp
 foreach ($user in $users) {
 
     $targetGroups = @()
-
+	
     if ($user.EmployeeType -eq "Student") {
 
         $grade = $user.OnPremisesExtensionAttributes.ExtensionAttribute1 -replace "Grade", ""
@@ -117,12 +117,42 @@ foreach ($user in $users) {
 
         $targetGroups += "GRP-Student-Grade-$grade"
         $targetGroups += "GRP-Student-Grade-$grade-$division"
+		$TargetGroups += "GRP-M365-License-Students"
+		$TargetGroups += "GRP-Policy-CA-Students"
     }
     elseif ($user.EmployeeType -eq "Staff") {
 
         $department = $user.Department
         $targetGroups += "GRP-Staff-All"
         $targetGroups += "GRP-Staff-$department"
+		$TargetGroups += "GRP-M365-License-Staff"
+		$TargetGroups += "GRP-Policy-CA-Staff"
+		
+		# Role-based assignment using ExtensionAttribute1
+		$role = $user.OnPremisesExtensionAttributes.ExtensionAttribute1
+
+		switch ($role) {
+		"ClassTeacher" {
+			$targetGroups += "GRP-Role-ClassTeachers"
+		}
+		"GradeCoordinator" {
+        $targetGroups += "GRP-Role-GradeCoordinators"
+		}
+		"DeptHead" {
+        $targetGroups += "GRP-Role-DeptHeads"
+		}
+		"Principal" {
+        $targetGroups += "GRP-Role-Principal"
+			}
+		}
+		# Department-based role groups
+		if ($department -eq "Academics") {
+		$targetGroups += "GRP-Role-Teachers"
+		}
+
+		if ($department -eq "IT") {
+		$targetGroups += "GRP-Role-ITAdmins"
+		}
     }
     else {
 
