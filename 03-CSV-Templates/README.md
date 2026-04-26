@@ -171,11 +171,7 @@ Service
 Policy
 ```
 
-Total managed groups:
-
-```text
-49
-```
+Total managed groups: `49`
 
 ---
 
