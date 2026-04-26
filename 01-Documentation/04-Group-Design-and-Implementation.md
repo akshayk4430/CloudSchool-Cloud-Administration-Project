@@ -1,6 +1,3 @@
-
----
-
 # Group Design and Implementation
 
 ## Objective
@@ -148,7 +145,7 @@ Both scripts are idempotent.
 
 Features:
 
-* Add missing groups/memberships
+* Add missing groups and memberships
 * Skip existing ones
 * Log results
 * Export to CSV
@@ -289,5 +286,3 @@ CloudSchool group design is based on:
 * Service and policy targeting
 
 This enables clean automation, scalable identity management, and real-world alignment with Microsoft 365 and Azure practices.
-
----
