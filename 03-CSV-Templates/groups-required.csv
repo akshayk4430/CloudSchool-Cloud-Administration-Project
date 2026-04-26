@@ -1,0 +1,50 @@
+DisplayName,MailNickname,Description,Category
+GRP-Staff-All,GRPStaffAll,All CloudSchool staff members,Organizational
+GRP-Staff-Academics,GRPAcademics,Staff in Academics department,Organizational
+GRP-Staff-Accounts,GRPAccounts,Staff in Accounts department,Organizational
+GRP-Staff-Activities,GRPActivities,Staff in Activities department,Organizational
+GRP-Staff-Administration,GRPAdministration,Staff in Administration department,Organizational
+GRP-Staff-HR,GRPHR,Staff in HR department,Organizational
+GRP-Staff-IT,GRPIT,Staff in IT department,Organizational
+GRP-Staff-Lab,GRPLab,Staff in Lab department,Organizational
+GRP-Staff-Library,GRPLibrary,Staff in Library department,Organizational
+GRP-Staff-Management,GRPManagement,Staff in Management department,Organizational
+GRP-Staff-Medical,GRPMedical,Staff in Medical department,Organizational
+GRP-Staff-Operations,GRPOperations,Staff in Operations department,Organizational
+GRP-Staff-Sports,GRPSports,Staff in Sports department,Organizational
+GRP-Staff-Student_Support,GRPStudentSupport,Staff in Student Support department,Organizational
+GRP-Staff-Transport,GRPTransport,Staff in Transport department,Organizational
+GRP-Student-Grade-01,GRPStudentGrade01,All students in Grade 01,Organizational
+GRP-Student-Grade-01-A,GRPStudentGrade01A,Students in Grade 01 Division A,Organizational
+GRP-Student-Grade-01-B,GRPStudentGrade01B,Students in Grade 01 Division B,Organizational
+GRP-Student-Grade-01-C,GRPStudentGrade01C,Students in Grade 01 Division C,Organizational
+GRP-Student-Grade-02,GRPStudentGrade02,All students in Grade 02,Organizational
+GRP-Student-Grade-02-A,GRPStudentGrade02A,Students in Grade 02 Division A,Organizational
+GRP-Student-Grade-02-B,GRPStudentGrade02B,Students in Grade 02 Division B,Organizational
+GRP-Student-Grade-02-C,GRPStudentGrade02C,Students in Grade 02 Division C,Organizational
+GRP-Student-Grade-03,GRPStudentGrade03,All students in Grade 03,Organizational
+GRP-Student-Grade-03-A,GRPStudentGrade03A,Students in Grade 03 Division A,Organizational
+GRP-Student-Grade-03-B,GRPStudentGrade03B,Students in Grade 03 Division B,Organizational
+GRP-Student-Grade-03-C,GRPStudentGrade03C,Students in Grade 03 Division C,Organizational
+GRP-Student-Grade-04,GRPStudentGrade04,All students in Grade 04,Organizational
+GRP-Student-Grade-04-A,GRPStudentGrade04A,Students in Grade 04 Division A,Organizational
+GRP-Student-Grade-04-B,GRPStudentGrade04B,Students in Grade 04 Division B,Organizational
+GRP-Student-Grade-04-C,GRPStudentGrade04C,Students in Grade 04 Division C,Organizational
+GRP-Student-Grade-05,GRPStudentGrade05,All students in Grade 05,Organizational
+GRP-Student-Grade-05-A,GRPStudentGrade05A,Students in Grade 05 Division A,Organizational
+GRP-Student-Grade-05-B,GRPStudentGrade05B,Students in Grade 05 Division B,Organizational
+GRP-Student-Grade-05-C,GRPStudentGrade05C,Students in Grade 05 Division C,Organizational
+GRP-Student-Grade-06,GRPStudentGrade06,All students in Grade 06,Organizational
+GRP-Student-Grade-06-A,GRPStudentGrade06A,Students in Grade 06 Division A,Organizational
+GRP-Student-Grade-06-B,GRPStudentGrade06B,Students in Grade 06 Division B,Organizational
+GRP-Student-Grade-06-C,GRPStudentGrade06C,Students in Grade 06 Division C,Organizational
+GRP-Role-Teachers,GRPRoleTeachers,Staff members with teaching responsibilities,Role
+GRP-Role-ClassTeachers,GRPRoleClassTeachers,Staff assigned as class teachers,Role
+GRP-Role-GradeCoordinators,GRPRoleGradeCoordinators,Staff responsible for grade coordination,Role
+GRP-Role-DeptHeads,GRPRoleDeptHeads,Department heads,Role
+GRP-Role-Principal,GRPRolePrincipal,School principal,Role
+GRP-Role-ITAdmins,GRPRoleITAdmins,IT administrators,Role
+GRP-M365-License-Students,GRPM365LicenseStudents,Students targeted for Microsoft 365 licensing,Service
+GRP-M365-License-Staff,GRPM365LicenseStaff,Staff targeted for Microsoft 365 licensing,Service
+GRP-Policy-CA-Students,GRPPolicyCAStudents,Students targeted for Conditional Access policies,Policy
+GRP-Policy-CA-Staff,GRPPolicyCAStaff,Staff targeted for Conditional Access policies,Policy
