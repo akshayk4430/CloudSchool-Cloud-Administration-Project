@@ -118,10 +118,10 @@ Used for Microsoft 365 and security targeting:
 ---
 
 ### Group Creation (Automation)
-Source of truth: 03-CSV-Templates/groups-required.csv
-Script:
+Source of truth: `03-CSV-Templates/groups-required.csv`
 
-02-Scripts/04-Create-Groups.ps1
+Script: `02-Scripts/04-Create-Groups.ps1`
+Script: `02-Scripts/05-Assign-Users-To-Groups.ps1`
 
 Features:
 
@@ -143,17 +143,17 @@ Script:
 
 #### Student Assignment
 
-- Grade → GRP-Student-Grade-*  
-- Division → GRP-Student-Grade-*-*  
-- License → GRP-M365-License-Students  
-- Policy → GRP-Policy-CA-Students  
+- Grade → `GRP-Student-Grade-*`
+- Division → `GRP-Student-Grade-*-*`
+- License → `GRP-M365-License-Students`
+- Policy → `GRP-Policy-CA-Students`
 
 #### Staff Assignment
 
-- All staff → GRP-Staff-All  
-- Department → GRP-Staff-*  
-- License → GRP-M365-License-Staff  
-- Policy → GRP-Policy-CA-Staff  
+- All staff → `GRP-Staff-All`
+- Department → `GRP-Staff-*`
+- License → `GRP-M365-License-Staff`
+- Policy → `GRP-Policy-CA-Staff`  
 
 #### Role-Based Assignment
 
