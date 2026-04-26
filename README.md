@@ -64,45 +64,113 @@ This ensures safe, repeatable automation aligned with real-world practices.
 
 - exports provisioning results for validation (`staff-provisioning-results.csv`)
 
-### 3. Group Design and Implementation
+### 3. Group Management (Production-Grade Automation)
 
-Group naming is standardized using:
+Group lifecycle management is implemented using a structured, automated approach.
 
-GRP-<EmployeeType>-<Logical Unit>
+#### Group Naming Standard
 
-#### Student Groups
+All groups follow:
 
-Student groups are based on grade and division:
+GRP-<Type>-<Logical Unit>
+---
 
-**Grade-level groups**
-- GRP-Student-Grade-01
-- GRP-Student-Grade-02
-- GRP-Student-Grade-03
-- GRP-Student-Grade-04
-- GRP-Student-Grade-05
-- GRP-Student-Grade-06
+### Group Categories
 
-**Division-level groups**
-- GRP-Student-Grade-01-A, GRP-Student-Grade-01-B, GRP-Student-Grade-01-C  
-- GRP-Student-Grade-02-A, GRP-Student-Grade-02-B, GRP-Student-Grade-02-C  
-- ...  
-- GRP-Student-Grade-06-A, GRP-Student-Grade-06-B, GRP-Student-Grade-06-C  
+#### 1. Organizational Groups
 
-Total student groups: **24**
+Based on structure:
 
-#### Staff Groups
+- Students → Grade and Division  
+- Staff → Department  
 
-- GRP-Staff-All (contains all staff users)
-- Department-based groups:
-  - GRP-Staff-IT
-  - GRP-Staff-Operations
-  - GRP-Staff-Academics
-  - GRP-Staff-Student_Support
-  - etc.
+Examples:
 
-Note:
-Department values are standardized to match group naming.  
-Spaces are replaced with underscores (e.g., Student Support → Student_Support).
+- GRP-Student-Grade-01  
+- GRP-Student-Grade-01-A  
+- GRP-Staff-IT  
+- GRP-Staff-Operations  
+
+---
+
+#### 2. Role-Based Groups
+
+Based on staff responsibilities:
+
+- GRP-Role-Teachers  
+- GRP-Role-ClassTeachers  
+- GRP-Role-GradeCoordinators  
+- GRP-Role-DeptHeads  
+- GRP-Role-Principal  
+- GRP-Role-ITAdmins  
+
+---
+
+#### 3. Service / Policy Groups
+
+Used for Microsoft 365 and security targeting:
+
+- GRP-M365-License-Students  
+- GRP-M365-License-Staff  
+- GRP-Policy-CA-Students  
+- GRP-Policy-CA-Staff  
+
+---
+
+### Group Creation (Automation)
+Source of truth: 03-CSV-Templates/groups-required.csv
+Script:
+
+02-Scripts/04-Create-Groups.ps1
+
+Features:
+
+- CSV-driven source of truth (`groups-required.csv`)
+- Creates missing groups
+- Skips existing groups
+- Idempotent (safe to re-run)
+- Logs results to CSV
+
+Total managed groups: **49**
+
+---
+
+### Group Assignment (Automation)
+
+Script:
+
+02-Scripts/05-Assign-Users-To-Groups.ps1
+
+#### Student Assignment
+
+- Grade → GRP-Student-Grade-*  
+- Division → GRP-Student-Grade-*-*  
+- License → GRP-M365-License-Students  
+- Policy → GRP-Policy-CA-Students  
+
+#### Staff Assignment
+
+- All staff → GRP-Staff-All  
+- Department → GRP-Staff-*  
+- License → GRP-M365-License-Staff  
+- Policy → GRP-Policy-CA-Staff  
+
+#### Role-Based Assignment
+
+- ExtensionAttribute1 → Role groups  
+- Department → Teachers / IT Admins  
+
+---
+
+### Design Principles
+
+- Attribute-driven identity model  
+- No manual mapping logic required  
+- Separation of structure, role, and policy groups  
+- Idempotent automation (Create / Add / Skip / Failed)  
+- Optimized Microsoft Graph usage (caching and minimal API calls)  
+
+This approach reflects real-world enterprise identity and access management practices.
 
 ### 4. Attribute Standardization
 To maintain identity structure and easy filtering:
