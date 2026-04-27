@@ -59,30 +59,24 @@ of script.
 `02-Scripts/05-create-administrative-units.ps1`
 
 
-Issue: Microsoft Graph PowerShell SDK Breaking (v2.36.1)
+Issue: Microsoft Graph SDK Module Failure (v2.36.1)
 
-Problem:
+Symptoms:
 
-Microsoft Graph PowerShell SDK version 2.36.1 was unstable in this environment
-Frequent failures while importing modules and running Graph commands
-Errors included:
-Module load failures (Microsoft.Graph.Authentication.dll not found)
-Connect-MgGraph not recognized or failing
+Connect-MgGraph command not recognized or failing
+Module import errors for Microsoft Graph
+Missing or invalid Microsoft.Graph.Authentication.dll
 Inconsistent behavior across sessions
 
-Root Cause:
+Cause:
 
-Version mismatch and broken dependencies in SDK v2.36.1
-Submodules not properly aligned or installed
-Known instability with newer Graph SDK releases in some environments (especially PowerShell 7)
+Unstable or broken dependencies in Microsoft Graph PowerShell SDK version 2.36.1
+Version mismatch between core module and submodules
 
-Fix Implemented:
+Fix:
 
-Fully removed existing Graph modules
-
-Installed stable version:
-
-Microsoft Graph PowerShell SDK version 2.24.0
+Removed all existing Microsoft Graph modules
+Installed stable version 2.24.0
 
 Commands Used:
 
@@ -93,11 +87,5 @@ Install-Module Microsoft.Graph -RequiredVersion 2.24.0 -Scope CurrentUser -Force
 Result:
 
 Module imports successful
-Connect-MgGraph working consistently
-All provisioning scripts executed without SDK-related failures
-
-Recommendation:
-
-Avoid latest SDK versions without validation
-Use a known stable version (2.24.0) for production scripts
-Lock module version in documentation and scripts to prevent breaking changes
+Connect-MgGraph working correctly
+All scripts executed without SDK-related issues
