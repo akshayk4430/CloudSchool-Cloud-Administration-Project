@@ -14,6 +14,10 @@ Format used:
 ### Symptoms
 - CSV file generated but contains no data
 
+### Impact
+- Export process failed to produce usable data
+- Affected reporting and validation steps
+
 ### Cause
 - GroupId was not correctly retrieved
 - Script failed to fetch group members
@@ -35,34 +39,42 @@ Get-MgGroup -Filter "displayName eq 'GROUP_NAME'"
 - 403 Forbidden error when creating Administrative Units
 - `Authorization_RequestDenied` returned from Microsoft Graph
 
+### Impact
+- Unable to create Administrative Units
+- Automation pipeline blocked due to permission failure
+
 ### Cause
 - Missing required permission: AdministrativeUnit.ReadWrite.All
 - Existing Graph connection did not include required scope
 
 ### Fix
-
-```PowerShell
-- Disconnected existing session:
-  Disconnect-MgGraph
-
-- Reconnected with required scope:
-  Connect-MgGraph -TenantId "22758c9c-f30c-404d-ba40-c5b01af9cab6" -Scopes "AdministrativeUnit.ReadWrite.All"
-```
+- Disconnected existing session
+- Reconnected with required scope
 - Re-ran the script
+
+```powershell
+Disconnect-MgGraph
+
+Connect-MgGraph -TenantId "22758c9c-f30c-404d-ba40-c5b01af9cab6" -Scopes "AdministrativeUnit.ReadWrite.All"
+```
 
 ### Result
 - Administrative Units created successfully
 - No further permission errors
 
 
-## ⚠️ Issue 2: Microsoft Graph SDK Module Failure (v2.36.1)
+## ⚠️ Issue 3: Microsoft Graph SDK Module Failure (v2.36.1)
 
 ### Symptoms
 
-Connect-MgGraph command not recognized or failing
-Module import errors for Microsoft Graph
-Missing or invalid Microsoft.Graph.Authentication.dll
-Inconsistent behavior across sessions
+-Connect-MgGraph command not recognized or failing
+-Module import errors for Microsoft Graph
+-Missing or invalid Microsoft.Graph.Authentication.dll
+-Inconsistent behavior across sessions
+
+### Impact
+- PowerShell automation scripts could not run
+- Development and testing blocked due to SDK instability
 
 ### Cause
 
@@ -71,17 +83,28 @@ Version mismatch between core module and submodules
 
 ### Fix
 
-Removed all existing Microsoft Graph modules
-Installed stable version 2.24.0
+-Removed all existing Microsoft Graph modules
+-Installed stable version 2.24.0
 
 Commands Used:
-```PowerShell
+```powershell
 Get-InstalledModule Microsoft.Graph* | Uninstall-Module -AllVersions -Force
 
 Install-Module Microsoft.Graph -RequiredVersion 2.24.0 -Scope CurrentUser -Force -AllowClobber
 ```
 ### Result
 
-Module imports successful
-Connect-MgGraph working correctly
-All scripts executed without SDK-related issues
+-Module imports successful
+-Connect-MgGraph working correctly
+-All scripts executed without SDK-related issues
+
+
+## Summary
+
+- Total Issues Documented: 3
+- Major Categories:
+  - Data Retrieval Issues
+  - Permission / RBAC Issues
+  - SDK / Tooling Issues
+
+This document will be continuously updated as new issues are encountered.
