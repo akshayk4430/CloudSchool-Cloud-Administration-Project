@@ -99,7 +99,7 @@ Install-Module Microsoft.Graph -RequiredVersion 2.24.0 -Scope CurrentUser -Force
 -All scripts executed without SDK-related issues
 
 
-## Summary
+## 📊 Summary
 
 - Total Issues Documented: 3
 - Major Categories:
