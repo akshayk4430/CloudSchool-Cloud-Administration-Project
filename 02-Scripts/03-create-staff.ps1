@@ -53,6 +53,10 @@ New-MgUser `
     -Department $staff.Department `
     -UsageLocation $staff.UsageLocation `
     -EmployeeType $staff.EmployeeType `
+	-OnPremisesExtensionAttributes @{
+		extensionAttribute1 = $staff.ExtensionAttribute1
+		extensionAttribute2 = $staff.ExtensionAttribute2
+	} `
     -PasswordProfile $passwordProfile | Out-Null
 
         $result.Action = "Create"
