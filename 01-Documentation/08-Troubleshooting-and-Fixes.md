@@ -24,6 +24,7 @@ Format used:
 
 ```powershell
 Get-MgGroup -Filter "displayName eq 'GROUP_NAME'"
+```
 
 ### Result
 - CSV export populated correctly with group members
