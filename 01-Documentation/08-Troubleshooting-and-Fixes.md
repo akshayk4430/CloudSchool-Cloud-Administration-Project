@@ -53,21 +53,21 @@ Get-MgGroup -Filter "displayName eq 'GROUP_NAME'"
 - No further permission errors
 
 
-Issue: Microsoft Graph SDK Module Failure (v2.36.1)
+## ⚠️ Issue 2: Microsoft Graph SDK Module Failure (v2.36.1)
 
-Symptoms:
+### Symptoms
 
 Connect-MgGraph command not recognized or failing
 Module import errors for Microsoft Graph
 Missing or invalid Microsoft.Graph.Authentication.dll
 Inconsistent behavior across sessions
 
-Cause:
+### Cause
 
 Unstable or broken dependencies in Microsoft Graph PowerShell SDK version 2.36.1
 Version mismatch between core module and submodules
 
-Fix:
+### Fix
 
 Removed all existing Microsoft Graph modules
 Installed stable version 2.24.0
@@ -78,7 +78,7 @@ Get-InstalledModule Microsoft.Graph* | Uninstall-Module -AllVersions -Force
 
 Install-Module Microsoft.Graph -RequiredVersion 2.24.0 -Scope CurrentUser -Force -AllowClobber
 
-Result:
+### Result
 
 Module imports successful
 Connect-MgGraph working correctly
