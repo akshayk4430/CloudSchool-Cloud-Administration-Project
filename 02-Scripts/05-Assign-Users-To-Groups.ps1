@@ -122,7 +122,7 @@ foreach ($user in $users) {
     }
     elseif ($user.EmployeeType -eq "Staff") {
 
-        $department = $user.Department
+        $department = $user.Department -replace " ", "_"
         $targetGroups += "GRP-Staff-All"
         $targetGroups += "GRP-Staff-$department"
 		$TargetGroups += "GRP-M365-License-Staff"
