@@ -40,12 +40,14 @@ Get-MgGroup -Filter "displayName eq 'GROUP_NAME'"
 - Existing Graph connection did not include required scope
 
 ### Fix
+
+```PowerShell
 - Disconnected existing session:
   Disconnect-MgGraph
 
 - Reconnected with required scope:
   Connect-MgGraph -TenantId "22758c9c-f30c-404d-ba40-c5b01af9cab6" -Scopes "AdministrativeUnit.ReadWrite.All"
-
+```
 - Re-ran the script
 
 ### Result
@@ -73,11 +75,11 @@ Removed all existing Microsoft Graph modules
 Installed stable version 2.24.0
 
 Commands Used:
-
+```PowerShell
 Get-InstalledModule Microsoft.Graph* | Uninstall-Module -AllVersions -Force
 
 Install-Module Microsoft.Graph -RequiredVersion 2.24.0 -Scope CurrentUser -Force -AllowClobber
-
+```
 ### Result
 
 Module imports successful
