@@ -48,6 +48,15 @@ Set-MgGroupLicense -GroupId "<GROUP_ID>" `
 -RemoveLicenses @()
 ```
 
+Example(Staff Group):
+```powershell
+Set-MgGroupLicense -GroupId "1cfde0e5-5cf6-4ede-9a53-0934bbffc150" `
+-AddLicenses @{SkuId = $sku.SkuId} `
+-RemoveLicenses @()
+```
+
+
+
 ---
 
 ## 5. Service Plan Control
