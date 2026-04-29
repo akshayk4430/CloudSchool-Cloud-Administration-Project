@@ -1,23 +1,3 @@
-That approach is fine.
-
-But do it properly: write structured content, not random notes.
-
----
-
-### Step 1 — Create the file in GitHub
-
-Create:
-
-```text
-01-Documentation/09-License-Management.md
-```
-
----
-
-### Step 2 — Use this base structure (write this first)
-
-Paste this **exact skeleton**:
-
 ````markdown
 # License Management
 
