@@ -16,12 +16,14 @@ Groups used:
 - GRP-M365-License-Students
 - GRP-M365-License-Staff
 
-Users are assigned to these groups based on their role.
-Staff → GRP-M365-License-Staff (55 users)
-Students → GRP-M365-License-Students (500 users)
+Users are assigned to these groups based on their role:
 
-Group-based licensing is used to automate license assignment and ensure consistency.
+- Students → GRP-M365-License-Students (500 users)
+- Staff → GRP-M365-License-Staff (55 users)
+
+Group-based licensing is used to automate license assignment and ensure consistency.  
 Any user added to the group automatically receives the assigned license.
+
 ---
 
 ## 3. License SKU
