@@ -1,4 +1,3 @@
-````markdown
 # License Management
 
 ## 1. Purpose
@@ -41,7 +40,7 @@ $sku = Get-MgSubscribedSku | Where-Object {$_.SkuPartNumber -eq "SPB"}
 Set-MgGroupLicense -GroupId "<GROUP_ID>" `
 -AddLicenses @{SkuId = $sku.SkuId} `
 -RemoveLicenses @()
-````
+```
 
 ---
 
