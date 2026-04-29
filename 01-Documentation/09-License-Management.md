@@ -17,7 +17,11 @@ Groups used:
 - GRP-M365-License-Staff
 
 Users are assigned to these groups based on their role.
+Staff → GRP-M365-License-Staff (55 users)
+Students → GRP-M365-License-Students (500 users)
 
+Group-based licensing is used to automate license assignment and ensure consistency.
+Any user added to the group automatically receives the assigned license.
 ---
 
 ## 3. License SKU
@@ -50,11 +54,11 @@ Each license contains multiple services (service plans).
 
 Examples:
 
-* Exchange Online
-* Microsoft Teams
-* SharePoint Online
+- Exchange Online
+- Microsoft Teams
+- SharePoint Online
 
-Specific services can be enabled or disabled depending on requirements.
+Specific services can be enabled or disabled based on organizational requirements.
 
 ---
 
@@ -62,28 +66,27 @@ Specific services can be enabled or disabled depending on requirements.
 
 License assignment was not executed in this environment due to trial limitations.
 
-* Available licenses: 1
-* Required licenses: 555+
+- Available licenses: 1
+- Required licenses: 555+
 
-Because of this, license assignment is designed but not implemented.
-
+Because of this constraint, only the licensing architecture was implemented and validated through group membership.
 ---
 
 ## 7. Validation Approach
 
 If licenses were available, validation would include:
 
-* Verify license assignment to users
-* Confirm mailbox creation in Exchange Online
-* Confirm Teams access
-* Confirm OneDrive provisioning
+- Verify group-based license assignment using Microsoft Graph
+- Confirm mailbox creation in Exchange Online
+- Confirm Teams activation
+- Confirm OneDrive provisioning
+- Validate service plan enablement/disablement
 
 ---
 
 ## 8. Summary
 
-The licensing model is fully designed using group-based assignment.
-Execution is limited due to licensing constraints, but the architecture is production-ready.
+This approach reflects real-world enterprise design, where licensing is centrally managed using group-based assignment.
 
 ```
 
