@@ -99,6 +99,4 @@ If licenses were available, validation would include:
 
 This approach reflects real-world enterprise design, where licensing is centrally managed using group-based assignment.
 
-```
-
 ---
