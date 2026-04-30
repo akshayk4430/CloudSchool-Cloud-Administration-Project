@@ -1,0 +1,7 @@
+﻿Name,Environment,Location
+RG-Network-Prod,Prod,uaenorth
+RG-Compute-Prod,Prod,uaenorth
+RG-Storage-Prod,Prod,uaenorth
+RG-Monitoring-Prod,Prod,uaenorth
+RG-Network-Dev,Dev,uaenorth
+RG-Compute-Dev,Dev,uaenorth
