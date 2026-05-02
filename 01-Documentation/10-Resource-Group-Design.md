@@ -1,87 +1,154 @@
-# Resource Group Design
+\# Resource Group Design
 
-## 1. Purpose
 
-Resource Groups are logical containers used to organize and manage Azure resources.  
-They help in:
 
-- Structuring resources in a clean way  
-- Applying access control (RBAC)  
-- Tracking costs  
-- Managing lifecycle (create, update, delete)
+\## 1. Purpose
 
----
 
-## 2. Design Approach
 
-The project follows a **combined model**:
+Resource Groups are logical containers used to organize and manage Azure resources.
 
-- Environment-based separation (Prod, Dev)
-- Workload-based separation (Network, Compute, Storage, Monitoring)
 
-This approach is commonly used in real-world environments because it provides:
 
-- Better organization  
-- Clear ownership boundaries  
-- Easier troubleshooting  
-- Improved cost visibility  
+They are used for:
 
----
+\- Organizing resources
 
-## 3. Resource Groups Created
+\- Applying RBAC (access control)
 
-### Production Environment
+\- Cost tracking
 
-- RG-Network-Prod  
-- RG-Compute-Prod  
-- RG-Storage-Prod  
-- RG-Monitoring-Prod  
+\- Lifecycle management
 
-### Development Environment
 
-- RG-Network-Dev  
-- RG-Compute-Dev  
 
----
+\---
 
-## 4. Tagging Strategy
 
-Each Resource Group includes the following tags:
 
-| Key         | Value         |
-|-------------|--------------|
-| Environment | Prod / Dev   |
-| Project     | CloudSchool  |
+\## 2. Design Approach
 
-Tags are used for:
 
-- Cost tracking  
-- Resource filtering  
-- Governance policies (Azure Policy)  
 
----
+The project follows a combined model:
 
-## 5. Key Learning
 
-- Resource Groups are **logical containers**, not dependency boundaries  
-- Resources in different Resource Groups can still communicate with each other  
-- Proper design improves scalability, management, and cost control  
-- Using a consistent naming and tagging strategy is critical in production environments  
 
----
+\- Environment-based separation (Prod, Dev)
 
-## 6. Automation Approach
+\- Workload-based separation (Network, Compute, Storage, Monitoring)
 
-Resource Groups are created using:
 
-- PowerShell (Az module)  
-- CSV-driven input (`resource-groups.csv`)  
-- Idempotent script (Create / Skip logic)  
+
+This approach provides:
+
+\- Clear structure
+
+\- Better troubleshooting
+
+\- Cost visibility
+
+\- Scalable design
+
+
+
+\---
+
+
+
+\## 3. Resource Groups Created
+
+
+
+Production:
+
+\- RG-Network-Prod
+
+\- RG-Compute-Prod
+
+\- RG-Storage-Prod
+
+\- RG-Monitoring-Prod
+
+
+
+Development:
+
+\- RG-Network-Dev
+
+\- RG-Compute-Dev
+
+
+
+\---
+
+
+
+\## 4. Tagging Strategy
+
+
+
+Tags applied:
+
+
+
+\- Environment = Prod / Dev
+
+\- Project = CloudSchool
+
+
+
+Used for:
+
+\- Cost tracking
+
+\- Filtering
+
+\- Governance (Azure Policy later)
+
+
+
+\---
+
+
+
+\## 5. Key Learning
+
+
+
+\- Resource Groups are logical only
+
+\- They do not isolate networking
+
+\- Resources across RGs can communicate
+
+\- Naming + tagging is critical in real environments
+
+
+
+\---
+
+
+
+\## 6. Automation
+
+
+
+Created using:
+
+\- PowerShell (Az module)
+
+\- CSV-driven input
+
+\- Idempotent logic (Create / Skip)
+
+
 
 This ensures:
 
-- No duplicate resources  
-- Easy updates through CSV  
-- Reusable automation  
+\- No duplication
 
----
+\- Repeatable deployment
+
+\- Clean automation design
+
