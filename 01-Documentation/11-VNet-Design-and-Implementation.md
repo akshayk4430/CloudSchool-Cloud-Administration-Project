@@ -83,24 +83,89 @@ Process followed:
 
 ---
 
-## 7. Validation
+## 7. Automation Implementation
+
+### Source of Truth
+
+VNet and subnet configuration is defined using a CSV file:
+
+03-CSV-Templates/vnets.csv
+
+Structure:
+
+- Environment
+- ResourceGroupName
+- Location
+- VNetName
+- AddressSpace
+- SubnetName
+- SubnetPrefix
+
+This enables centralized and scalable network configuration.
+
+---
+
+### Automation Script
+
+Script:
+
+02-Scripts/11-create-vnets-and-subnets.ps1
+
+Capabilities:
+
+- Creates VNets if not existing
+- Adds subnets if missing
+- Skips existing VNets and subnets
+- Validates resource group existence
+- Uses try/catch for error handling
+- Exports execution results to CSV
+
+---
+
+### Idempotent Behavior
+
+The script is designed for safe re-execution:
+
+- Existing VNets → Skipped
+- Existing subnets → Skipped
+- Missing subnets → Added
+- Missing resource groups → Logged as failure
+
+This ensures repeatable and production-safe deployments.
+
+---
+
+## 8. Validation
 
 Verified using:
 
 - Get-AzVirtualNetwork
 - AddressSpace confirmation
 - Subnet listing
+- Script output logs
 
-Both VNets:
-- ProvisioningState = Succeeded
-- Correct address spaces applied
-- Subnets deployed as designed
+Result:
+
+- VNet-CloudSchool-Prod → Exists
+- VNet-CloudSchool-Dev → Exists
+- All required subnets → Present
+
+Output file:
+
+05-Outputs/vnet-subnet-results.csv
+
+Example result:
+
+- Action: Skipped
+- Reason: Subnet already exists
 
 ---
 
-## 8. Key Learning
+## 9. Key Learning
 
 - VNets are region-bound
 - Subnets are created locally first, then applied
 - Address planning is critical before deployment
 - Environment separation improves real-world design quality
+- CSV-driven automation enables scalable infrastructure management
+- Idempotent scripting is essential for production environments
