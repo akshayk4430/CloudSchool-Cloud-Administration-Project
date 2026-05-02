@@ -17,7 +17,7 @@ The goal is to create a fully documented and automated cloud setup that reflects
 | Groups               | Completed   |
 | Administrative Units | Completed   |
 | Resource Groups      | Completed   |
-| Networking (VNet)    | In Progress |
+| Networking (VNet)    | Completed   |
 | Governance (Policy)  | Upcoming    |
 
 ---
@@ -225,6 +225,12 @@ Subnets:
 * `SNet-Management-Prod` → `10.10.1.0/24`
 * `SNet-Workload-Prod` → `10.10.2.0/24`
 * `SNet-PrivateEndpoint-Prod` → `10.10.3.0/24`
+
+Automation:
+
+- CSV-driven VNet and subnet configuration
+- Script: `02-Scripts/11-create-vnets-and-subnets.ps1`
+- Idempotent execution (Create / Add / Skip)
 
 ---
 
