@@ -9,6 +9,19 @@ The goal is to create a fully documented and automated cloud setup that reflects
 
 ---
 
+## 📊 Project Status
+
+| Stage                 | Status       |
+|----------------------|-------------|
+| Identity             | Completed   |
+| Groups               | Completed   |
+| Administrative Units | Completed   |
+| Resource Groups      | Completed   |
+| Networking (VNet)    | In Progress |
+| Governance (Policy)  | Upcoming    |
+
+---
+
 ## 🎯 Project Goals
 
 * Build a realistic school tenant in Microsoft 365 + Entra ID
@@ -67,13 +80,11 @@ Features:
 
 Output:
 
-* `staff-provisioning-results.csv`
+* Generated locally (not stored in repository)
 
 ---
 
 ### 3. Group Management (Production-Grade Automation)
-
-Group lifecycle management is implemented using a structured, automated approach.
 
 #### Group Naming Standard
 
@@ -83,9 +94,9 @@ All groups follow:
 
 ---
 
-### Group Categories
+#### Group Categories
 
-#### 1. Organizational Groups
+##### Organizational Groups
 
 * Students → Grade and Division
 * Staff → Department
@@ -99,7 +110,7 @@ Examples:
 
 ---
 
-#### 2. Role-Based Groups
+##### Role-Based Groups
 
 * `GRP-Role-Teachers`
 * `GRP-Role-ClassTeachers`
@@ -110,7 +121,7 @@ Examples:
 
 ---
 
-#### 3. Service / Policy Groups
+##### Service / Policy Groups
 
 * `GRP-M365-License-Students`
 * `GRP-M365-License-Staff`
@@ -122,7 +133,6 @@ Examples:
 ### Group Creation (Automation)
 
 Source of truth: `03-CSV-Templates/groups-required.csv`
-
 Script: `02-Scripts/04-Create-Groups.ps1`
 
 Features:
@@ -131,7 +141,6 @@ Features:
 * Creates missing groups
 * Skips existing groups
 * Idempotent execution
-* Logs results
 
 Total managed groups: **49**
 
@@ -148,16 +157,12 @@ Script: `02-Scripts/05-Assign-Users-To-Groups.ps1`
 * License → `GRP-M365-License-Students`
 * Policy → `GRP-Policy-CA-Students`
 
----
-
 #### Staff Assignment
 
 * All staff → `GRP-Staff-All`
 * Department → `GRP-Staff-*`
 * License → `GRP-M365-License-Staff`
 * Policy → `GRP-Policy-CA-Staff`
-
----
 
 #### Role-Based Assignment
 
@@ -179,15 +184,55 @@ Script: `02-Scripts/05-Assign-Users-To-Groups.ps1`
 ### 4. Attribute Standardization
 
 | Attribute           | Usage                                 |
-| ------------------- | ------------------------------------- |
-| employeeType        | Staff / Student                       |
-| extensionAttribute1 | Student: Grade / Staff: Role          |
+|-------------------|-------------------------------------|
+| employeeType        | Staff / Student                     |
+| extensionAttribute1 | Student: Grade / Staff: Role        |
 | extensionAttribute2 | Student: Division / Staff: Assignment |
 
 Values:
 
 * Staff = `Staff`
 * Student = `Student`
+
+---
+
+### 5. Azure Infrastructure (AZ-104 Progress)
+
+#### Subscription
+
+* Azure subscription created and configured
+* Renamed to: `CloudSchool-Prod-Subscription`
+
+---
+
+#### Resource Groups
+
+* Structured resource groups implemented using CSV-driven automation
+* Script: `02-Scripts/07-create-resource-groups.ps1`
+* Environment-based segmentation applied
+
+---
+
+#### Virtual Network (VNet)
+
+Production VNet deployed:
+
+* Name: `VNet-CloudSchool-Prod`
+* Address Space: `10.10.0.0/16`
+
+Subnets:
+
+* `SNet-Management-Prod` → `10.10.1.0/24`
+* `SNet-Workload-Prod` → `10.10.2.0/24`
+* `SNet-PrivateEndpoint-Prod` → `10.10.3.0/24`
+
+---
+
+#### Design Principles
+
+* Environment isolation (Prod vs Dev)
+* Subnet-based workload segmentation
+* Azure-native architecture aligned with AZ-104
 
 ---
 
@@ -205,9 +250,11 @@ Values:
 
 * Microsoft Entra ID (Azure AD)
 * Microsoft 365 Admin Center
+* Azure Portal
+* Azure PowerShell (Az Module)
 * PowerShell
 * Microsoft Graph PowerShell Module
-* GitHub
+* Git & GitHub (Feature Branch Workflow)
 
 ---
 
@@ -218,5 +265,7 @@ Values:
 02-Scripts/           -> PowerShell scripts
 03-CSV-Templates/     -> Input templates
 04-Screenshots/       -> Evidence
-05-Outputs/           -> Results and logs
+05-Outputs/           -> Generated results (ignored in Git)
+06-Notes/             -> Learning notes
+
 ```
