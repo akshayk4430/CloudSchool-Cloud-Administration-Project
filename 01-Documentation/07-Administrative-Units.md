@@ -126,7 +126,7 @@ No role assignments are made in this task. AUs only define the boundary.
 
 ```
 [INFO] Students fetched: 500
-[INFO] Staff fetched: 50
+[INFO] Staff fetched: 55
 
 AU-All-Students         — Created | Added: 500 | Skipped: 0
 AU-Grade-01             — Existed | Added: 77  | Skipped: 3

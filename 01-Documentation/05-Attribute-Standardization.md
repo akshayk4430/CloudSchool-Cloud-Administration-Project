@@ -228,6 +228,7 @@ Group names are dynamically constructed from attributes.
 Avoids inconsistencies such as:
 
 ```text
+Incorrect examples (do NOT use):
 GRP-Staff-Student Support
 GRP-Staff-StudentSupport
 ```
