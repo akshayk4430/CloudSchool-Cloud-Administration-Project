@@ -1,0 +1,11 @@
+﻿AUName,Description,UserType,DepartmentFilter
+AU-CloudSchool-All-Students,All CloudSchool students,Student,Grade1;Grade2;Grade3;Grade4;Grade5;Grade6
+AU-CloudSchool-All-Staff,All CloudSchool staff,Staff,*
+AU-CloudSchool-Grade-01,Grade 01 students,Student,Grade1
+AU-CloudSchool-Grade-02,Grade 02 students,Student,Grade2
+AU-CloudSchool-Grade-03,Grade 03 students,Student,Grade3
+AU-CloudSchool-Grade-04,Grade 04 students,Student,Grade4
+AU-CloudSchool-Grade-05,Grade 05 students,Student,Grade5
+AU-CloudSchool-Grade-06,Grade 06 students,Student,Grade6
+AU-CloudSchool-IT,IT staff,Staff,IT
+AU-CloudSchool-Management,Management staff,Staff,Management
