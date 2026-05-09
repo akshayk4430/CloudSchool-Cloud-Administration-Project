@@ -100,6 +100,10 @@ Structure:
 - AddressSpace
 - SubnetName
 - SubnetPrefix
+- Project
+- ManagedBy
+- Purpose
+- Owner
 
 This enables centralized and scalable network configuration.
 
@@ -114,8 +118,10 @@ Script:
 Capabilities:
 
 - Creates VNets if not existing
+- Applies VNet-level tags during creation
+- Merges VNet-level tags on existing VNets
 - Adds subnets if missing
-- Skips existing VNets and subnets
+- Skips existing subnets after checking VNet tag state
 - Validates resource group existence
 - Uses try/catch for error handling
 - Exports execution results to CSV
@@ -126,7 +132,7 @@ Capabilities:
 
 The script is designed for safe re-execution:
 
-- Existing VNets → Skipped
+- Existing VNets → Tags merged and subnet state checked
 - Existing subnets → Skipped
 - Missing subnets → Added
 - Missing resource groups → Logged as failure
@@ -135,7 +141,28 @@ This ensures repeatable and production-safe deployments.
 
 ---
 
-## 8. Validation
+## 8. VNet Tagging Standard
+
+VNet-level tags are applied from the CSV source of truth.
+
+Tags used:
+
+- Project = CloudSchool
+- Environment = Prod or Dev
+- ManagedBy = PowerShell
+- Purpose = Networking
+- Owner = CloudSchool-IT
+
+Tagging purpose:
+
+- Improves resource ownership visibility
+- Supports cost management and reporting
+- Keeps Azure resources aligned with the GitHub-documented design
+- Ensures existing VNets can be corrected through automation without manual portal-only changes
+
+---
+
+## 9. Validation
 
 Verified using:
 
@@ -149,6 +176,7 @@ Result:
 - VNet-CloudSchool-Prod → Exists
 - VNet-CloudSchool-Dev → Exists
 - All required subnets → Present
+- Required VNet tags → Applied and verified
 
 Output file:
 
@@ -161,7 +189,7 @@ Example result:
 
 ---
 
-## 9. Key Learning
+## 10. Key Learning
 
 - VNets are region-bound
 - Subnets are created locally first, then applied
@@ -169,3 +197,4 @@ Example result:
 - Environment separation improves real-world design quality
 - CSV-driven automation enables scalable infrastructure management
 - Idempotent scripting is essential for production environments
+- Tags should be managed through automation, not only through the Azure Portal
