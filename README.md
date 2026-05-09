@@ -15,7 +15,7 @@ The goal is to create a fully documented and automated cloud setup that reflects
 |----------------------|-------------|
 | Identity             | Completed   |
 | Groups               | Completed   |
-| Administrative Units | Needs Rebuild |
+| Administrative Units | Completed |
 | Resource Groups      | Completed   |
 | Networking (VNet)    | Completed   |
 | Governance (Policy)  | Upcoming    |
