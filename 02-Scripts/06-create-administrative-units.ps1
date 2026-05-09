@@ -1,6 +1,3 @@
-$scriptPath = ".\02-Scripts\06-create-administrative-units.ps1"
-
-$scriptContent = @'
 <#
 .SYNOPSIS
 Creates and populates Microsoft Entra ID Administrative Units for CloudSchool.
@@ -59,7 +56,7 @@ Write-Host "Students fetched: $($students.Count)" -ForegroundColor Green
 Write-Host "Staff fetched: $($staff.Count)" -ForegroundColor Green
 
 Write-Host "Fetching existing Administrative Units..." -ForegroundColor Cyan
-$existingAUs = Get-MgDirectoryAdministrativeUnit -All -Property Id,DisplayName,Description
+$existingAUs = @(Get-MgDirectoryAdministrativeUnit -All -Property Id,DisplayName,Description)
 
 $results = foreach ($definition in $auDefinitions) {
 
@@ -92,7 +89,7 @@ $results = foreach ($definition in $auDefinitions) {
         $au = New-MgDirectoryAdministrativeUnit -BodyParameter $body
         $auStatus = "Created"
 
-        $existingAUs += $au
+        $existingAUs = @($existingAUs) + $au
         Write-Host "Created AU: $auName" -ForegroundColor Green
     }
     else {
@@ -173,6 +170,3 @@ Write-Host "Administrative Unit processing completed." -ForegroundColor Green
 Write-Host "Results saved to: $outputPath" -ForegroundColor Green
 
 $results | Format-Table -AutoSize
-'@
-
-Set-Content -Path $scriptPath -Value $scriptContent
