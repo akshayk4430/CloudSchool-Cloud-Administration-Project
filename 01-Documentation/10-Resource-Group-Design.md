@@ -1,154 +1,105 @@
-\# Resource Group Design
+# Resource Group Design
 
-
-
-\## 1. Purpose
-
-
+## 1. Purpose
 
 Resource Groups are logical containers used to organize and manage Azure resources.
 
-
-
 They are used for:
 
-\- Organizing resources
+- Organizing resources
 
-\- Applying RBAC (access control)
+- Applying RBAC (access control)
 
-\- Cost tracking
+- Cost tracking
 
-\- Lifecycle management
+- Lifecycle management
 
+---
 
-
-\---
-
-
-
-\## 2. Design Approach
-
-
+## 2. Design Approach
 
 The project follows a combined model:
 
+- Environment-based separation (Prod, Dev)
 
-
-\- Environment-based separation (Prod, Dev)
-
-\- Workload-based separation (Network, Compute, Storage, Monitoring)
-
-
+- Workload-based separation (Network, Compute, Storage, Monitoring)
 
 This approach provides:
 
-\- Clear structure
+- Clear structure
 
-\- Better troubleshooting
+- Better troubleshooting
 
-\- Cost visibility
+- Cost visibility
 
-\- Scalable design
+- Scalable design
 
+---
 
-
-\---
-
-
-
-\## 3. Resource Groups Created
-
-
+## 3. Resource Groups Created
 
 Production:
 
-\- RG-Network-Prod
+- RG-Network-Prod
 
-\- RG-Compute-Prod
+- RG-Compute-Prod
 
-\- RG-Storage-Prod
+- RG-Storage-Prod
 
-\- RG-Monitoring-Prod
-
-
+- RG-Monitoring-Prod
 
 Development:
 
-\- RG-Network-Dev
+- RG-Network-Dev
 
-\- RG-Compute-Dev
+- RG-Compute-Dev
 
+---
 
-
-\---
-
-
-
-\## 4. Tagging Strategy
-
-
+## 4. Tagging Strategy
 
 Tags applied:
 
+- Environment = Prod / Dev
 
-
-\- Environment = Prod / Dev
-
-\- Project = CloudSchool
-
-
+- Project = CloudSchool
 
 Used for:
 
-\- Cost tracking
+- Cost tracking
 
-\- Filtering
+- Filtering
 
-\- Governance (Azure Policy later)
+- Governance (Azure Policy later)
 
+---
 
+## 5. Key Learning
 
-\---
+- Resource Groups are logical only
 
+- They do not isolate networking
 
+- Resources across RGs can communicate
 
-\## 5. Key Learning
+- Naming + tagging is critical in real environments
 
+---
 
-
-\- Resource Groups are logical only
-
-\- They do not isolate networking
-
-\- Resources across RGs can communicate
-
-\- Naming + tagging is critical in real environments
-
-
-
-\---
-
-
-
-\## 6. Automation
-
-
+## 6. Automation
 
 Created using:
 
-\- PowerShell (Az module)
+- PowerShell (Az module)
 
-\- CSV-driven input
+- CSV-driven input
 
-\- Idempotent logic (Create / Skip)
-
-
+- Idempotent logic (Create / Skip)
 
 This ensures:
 
-\- No duplication
+- No duplication
 
-\- Repeatable deployment
+- Repeatable deployment
 
-\- Clean automation design
-
+- Clean automation design

@@ -9,7 +9,7 @@ Without a license, users remain as identity objects and cannot access these serv
 
 ## 2. Licensing Model
 
-The environment is designed using **group-based licensing**.
+The environment is designed to support **group-based licensing**, but group-based license assignment has not been enabled in the current tenant.
 
 Groups used:
 
@@ -21,8 +21,8 @@ Users are assigned to these groups based on their role:
 - Students → GRP-M365-License-Students (500 users)
 - Staff → GRP-M365-License-Staff (55 users)
 
-Group-based licensing is used to automate license assignment and ensure consistency.  
-Any user added to the group automatically receives the assigned license.
+The license groups are prepared and populated for future group-based license assignment.
+In the current tenant, users do not automatically receive licenses from these groups because no license SKU is assigned to the groups.
 
 ---
 
@@ -36,7 +36,7 @@ License used:
 
 ## 4. License Assignment Method
 
-Licenses are assigned at the group level using Microsoft Graph PowerShell.
+If enough licenses are available, licenses can be assigned at the group level using Microsoft Graph PowerShell.
 
 Example:
 
@@ -77,10 +77,12 @@ Specific services can be enabled or disabled based on organizational requirement
 
 License assignment was not executed in this environment due to trial limitations.
 
-- Available licenses: 1
-- Required licenses: 555+
+- Available Business Premium licenses: 25
+- Consumed licenses: 1
+- Required licenses for all users: 555
 
 Because of this constraint, only the licensing architecture was implemented and validated through group membership.
+
 ---
 
 ## 7. Validation Approach

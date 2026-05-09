@@ -15,7 +15,7 @@ The goal is to create a fully documented and automated cloud setup that reflects
 |----------------------|-------------|
 | Identity             | Completed   |
 | Groups               | Completed   |
-| Administrative Units | Completed   |
+| Administrative Units | Needs Rebuild |
 | Resource Groups      | Completed   |
 | Networking (VNet)    | Completed   |
 | Governance (Policy)  | Upcoming    |
@@ -30,7 +30,7 @@ The goal is to create a fully documented and automated cloud setup that reflects
 * Build idempotent scripts supporting create, update, and skip logic
 * Apply attribute-based identity classification (employeeType, extension attributes)
 * Design scalable group structures for grade and department management
-* Implement administrative units for organizational control
+* Prepare administrative units for organizational control and rebuild them in the current tenant
 * Maintain production-style documentation and version control using GitHub
 * Create an interview-ready cloud administration portfolio project
 
