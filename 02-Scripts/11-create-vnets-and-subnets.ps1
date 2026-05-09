@@ -23,7 +23,11 @@ $requiredColumns = @(
     "VNetName",
     "AddressSpace",
     "SubnetName",
-    "SubnetPrefix"
+    "SubnetPrefix",
+    "Project",
+    "ManagedBy",
+    "Purpose",
+    "Owner"
 )
 
 foreach ($column in $requiredColumns) {
@@ -44,8 +48,16 @@ foreach ($group in $vnetGroups) {
     $vnetName    = $vnetData.VNetName
     $address     = $vnetData.AddressSpace
 
+    $desiredTags = @{
+        Project     = $vnetData.Project
+        Environment = $vnetData.Environment
+        ManagedBy   = $vnetData.ManagedBy
+        Purpose     = $vnetData.Purpose
+        Owner       = $vnetData.Owner
+    }
+
     try {
-        $existingRG = Get-AzResourceGroup -Name $rgName -ErrorAction Stop
+        Get-AzResourceGroup -Name $rgName -ErrorAction Stop | Out-Null
     }
     catch {
         $results += [PSCustomObject]@{
@@ -82,6 +94,7 @@ foreach ($group in $vnetGroups) {
                 -Location $location `
                 -AddressPrefix $address `
                 -Subnet $subnetConfigs `
+                -Tag $desiredTags `
                 -ErrorAction Stop | Out-Null
 
             foreach ($subnet in $group.Group) {
@@ -91,13 +104,30 @@ foreach ($group in $vnetGroups) {
                     VNetName          = $vnetName
                     SubnetName        = $subnet.SubnetName
                     Action            = "Created"
-                    Reason            = "VNet and subnet created"
+                    Reason            = "VNet and subnet created with tags"
                 }
             }
         }
         else {
 
             Write-Host "VNET EXISTS: $vnetName"
+
+            Update-AzTag `
+                -ResourceId $existingVnet.Id `
+                -Tag $desiredTags `
+                -Operation Merge `
+                -ErrorAction Stop | Out-Null
+
+            foreach ($tagKey in $desiredTags.Keys) {
+                $results += [PSCustomObject]@{
+                    Environment       = $environment
+                    ResourceGroupName = $rgName
+                    VNetName          = $vnetName
+                    SubnetName        = ""
+                    Action            = "Updated"
+                    Reason            = "VNet tag merged: $tagKey"
+                }
+            }
 
             $vnetChanged = $false
 

@@ -1,6 +1,6 @@
-Environment,ResourceGroupName,Location,VNetName,AddressSpace,SubnetName,SubnetPrefix
-Prod,RG-Network-Prod,uaenorth,VNet-CloudSchool-Prod,10.10.0.0/16,SNet-Management-Prod,10.10.1.0/24
-Prod,RG-Network-Prod,uaenorth,VNet-CloudSchool-Prod,10.10.0.0/16,SNet-Workload-Prod,10.10.2.0/24
-Prod,RG-Network-Prod,uaenorth,VNet-CloudSchool-Prod,10.10.0.0/16,SNet-PrivateEndpoint-Prod,10.10.3.0/24
-Dev,RG-Network-Dev,uaenorth,VNet-CloudSchool-Dev,10.20.0.0/16,SNet-Management-Dev,10.20.1.0/24
-Dev,RG-Network-Dev,uaenorth,VNet-CloudSchool-Dev,10.20.0.0/16,SNet-Workload-Dev,10.20.2.0/24
+Environment,ResourceGroupName,Location,VNetName,AddressSpace,SubnetName,SubnetPrefix,Project,ManagedBy,Purpose,Owner
+Prod,RG-Network-Prod,uaenorth,VNet-CloudSchool-Prod,10.10.0.0/16,SNet-Management-Prod,10.10.1.0/24,CloudSchool,PowerShell,Networking,CloudSchool-IT
+Prod,RG-Network-Prod,uaenorth,VNet-CloudSchool-Prod,10.10.0.0/16,SNet-Workload-Prod,10.10.2.0/24,CloudSchool,PowerShell,Networking,CloudSchool-IT
+Prod,RG-Network-Prod,uaenorth,VNet-CloudSchool-Prod,10.10.0.0/16,SNet-PrivateEndpoint-Prod,10.10.3.0/24,CloudSchool,PowerShell,Networking,CloudSchool-IT
+Dev,RG-Network-Dev,uaenorth,VNet-CloudSchool-Dev,10.20.0.0/16,SNet-Management-Dev,10.20.1.0/24,CloudSchool,PowerShell,Networking,CloudSchool-IT
+Dev,RG-Network-Dev,uaenorth,VNet-CloudSchool-Dev,10.20.0.0/16,SNet-Workload-Dev,10.20.2.0/24,CloudSchool,PowerShell,Networking,CloudSchool-IT
