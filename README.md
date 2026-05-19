@@ -11,14 +11,14 @@ The goal is to create a fully documented and automated cloud setup that reflects
 
 ## 📊 Project Status
 
-| Stage                 | Status       |
+| Stage                 | Status      |
 |----------------------|-------------|
 | Identity             | Completed   |
 | Groups               | Completed   |
-| Administrative Units | Completed |
+| Administrative Units | Completed   |
 | Resource Groups      | Completed   |
 | Networking (VNet)    | Completed   |
-| Governance (Policy)  | Upcoming    |
+| Governance (Policy)  | Completed   |
 
 ---
 
@@ -233,6 +233,25 @@ Automation:
 - Idempotent execution (Create / Add / Skip)
 
 ---
+
+#### Governance / Azure Policy
+
+Azure Policy governance implemented using the built-in **Allowed locations** policy.
+
+Policy assignment:
+
+* Name: `audit-allowed-locations-rg-compute-dev`
+* Scope: `RG-Compute-Dev`
+* Allowed location: `uaenorth`
+* Effect: `Audit`
+
+Automation:
+
+- Script: `02-Scripts/12-assign-allowed-location-policy.ps1`
+- Documentation: `01-Documentation/12-Azure-Policy-Governance.md`
+- Idempotent execution
+- Supports `-WhatIf`
+- Checks for existing assignment before creation
 
 #### Design Principles
 
