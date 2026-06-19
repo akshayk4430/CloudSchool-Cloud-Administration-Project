@@ -9,6 +9,7 @@ This script reads Administrative Unit definitions from:
 It creates missing Administrative Units and adds matching users based on:
 - UserType
 - DepartmentFilter
+- DivisionFilter
 
 This script does NOT assign admin roles.
 This script does NOT delegate permissions.
@@ -30,7 +31,7 @@ if (-not (Test-Path $csvPath)) {
     throw "CSV file not found: $csvPath"
 }
 
-$requiredColumns = @("AUName", "Description", "UserType", "DepartmentFilter")
+$requiredColumns = @("AUName", "Description", "UserType", "DepartmentFilter","DivisionFilter")
 $auDefinitions = Import-Csv $csvPath
 
 if ($auDefinitions.Count -eq 0) {
@@ -47,7 +48,7 @@ Write-Host "AU definitions loaded: $($auDefinitions.Count)" -ForegroundColor Gre
 
 Write-Host "Fetching users from Microsoft Graph..." -ForegroundColor Cyan
 
-$allUsers = Get-MgUser -All -Property Id,DisplayName,UserPrincipalName,EmployeeType,Department
+$allUsers = Get-MgUser -All -Property Id,DisplayName,UserPrincipalName,EmployeeType,Department,onPremisesExtensionAttributes
 
 $students = $allUsers | Where-Object { $_.EmployeeType -eq "Student" }
 $staff = $allUsers | Where-Object { $_.EmployeeType -eq "Staff" }
@@ -64,6 +65,7 @@ $results = foreach ($definition in $auDefinitions) {
     $description = $definition.Description.Trim()
     $userType = $definition.UserType.Trim()
     $departmentFilter = $definition.DepartmentFilter.Trim()
+	$divisionFilter = $definition.DivisionFilter.Trim()
 
     if ([string]::IsNullOrWhiteSpace($auName)) {
         Write-Warning "Skipping row because AUName is empty."
@@ -114,6 +116,11 @@ $results = foreach ($definition in $auDefinitions) {
             $_.Department -in $departments
         }
     }
+	if ($divisionFilter -ne "*") {
+		$matchingUsers =$matchingUsers | Where-Object {
+			$_.OnPremisesExtensionAttributes.ExtensionAttribute2 -eq $divisionFilter
+		}
+	}
 
     Write-Host "Matching users found: $($matchingUsers.Count)" -ForegroundColor Cyan
 

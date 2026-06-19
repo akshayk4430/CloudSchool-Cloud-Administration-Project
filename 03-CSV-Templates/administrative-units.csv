@@ -1,11 +1,29 @@
-﻿AUName,Description,UserType,DepartmentFilter
-AU-CloudSchool-All-Students,All CloudSchool students,Student,Grade1;Grade2;Grade3;Grade4;Grade5;Grade6
-AU-CloudSchool-All-Staff,All CloudSchool staff,Staff,*
-AU-CloudSchool-Grade-01,Grade 01 students,Student,Grade1
-AU-CloudSchool-Grade-02,Grade 02 students,Student,Grade2
-AU-CloudSchool-Grade-03,Grade 03 students,Student,Grade3
-AU-CloudSchool-Grade-04,Grade 04 students,Student,Grade4
-AU-CloudSchool-Grade-05,Grade 05 students,Student,Grade5
-AU-CloudSchool-Grade-06,Grade 06 students,Student,Grade6
-AU-CloudSchool-IT,IT staff,Staff,IT
-AU-CloudSchool-Management,Management staff,Staff,Management
+﻿AUName,Description,UserType,DepartmentFilter,DivisionFilter
+AU-CloudSchool-All-Students,All CloudSchool students,Student,Grade1;Grade2;Grade3;Grade4;Grade5;Grade6,*
+AU-CloudSchool-All-Staff,All CloudSchool staff,Staff,*,*
+AU-CloudSchool-Grade-01,Grade 01 students,Student,Grade1,*
+AU-CloudSchool-Grade-02,Grade 02 students,Student,Grade2,*
+AU-CloudSchool-Grade-03,Grade 03 students,Student,Grade3,*
+AU-CloudSchool-Grade-04,Grade 04 students,Student,Grade4,*
+AU-CloudSchool-Grade-05,Grade 05 students,Student,Grade5,*
+AU-CloudSchool-Grade-06,Grade 06 students,Student,Grade6,*
+AU-CloudSchool-IT,IT staff,Staff,IT,*
+AU-CloudSchool-Management,Management staff,Staff,Management,*
+AU-CloudSchool-Grade-01-A,Grade 01 Division A students,Student,Grade1,DivisionA
+AU-CloudSchool-Grade-01-B,Grade 01 Division B students,Student,Grade1,DivisionB
+AU-CloudSchool-Grade-01-C,Grade 01 Division C students,Student,Grade1,DivisionC
+AU-CloudSchool-Grade-02-A,Grade 02 Division A students,Student,Grade2,DivisionA
+AU-CloudSchool-Grade-02-B,Grade 02 Division B students,Student,Grade2,DivisionB
+AU-CloudSchool-Grade-02-C,Grade 02 Division C students,Student,Grade2,DivisionC
+AU-CloudSchool-Grade-03-A,Grade 03 Division A students,Student,Grade3,DivisionA
+AU-CloudSchool-Grade-03-B,Grade 03 Division B students,Student,Grade3,DivisionB
+AU-CloudSchool-Grade-03-C,Grade 03 Division C students,Student,Grade3,DivisionC
+AU-CloudSchool-Grade-04-A,Grade 04 Division A students,Student,Grade4,DivisionA
+AU-CloudSchool-Grade-04-B,Grade 04 Division B students,Student,Grade4,DivisionB
+AU-CloudSchool-Grade-04-C,Grade 04 Division C students,Student,Grade4,DivisionC
+AU-CloudSchool-Grade-05-A,Grade 05 Division A students,Student,Grade5,DivisionA
+AU-CloudSchool-Grade-05-B,Grade 05 Division B students,Student,Grade5,DivisionB
+AU-CloudSchool-Grade-05-C,Grade 05 Division C students,Student,Grade5,DivisionC
+AU-CloudSchool-Grade-06-A,Grade 06 Division A students,Student,Grade6,DivisionA
+AU-CloudSchool-Grade-06-B,Grade 06 Division B students,Student,Grade6,DivisionB
+AU-CloudSchool-Grade-06-C,Grade 06 Division C students,Student,Grade6,DivisionC
