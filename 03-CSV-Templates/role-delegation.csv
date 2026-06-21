@@ -1,0 +1,25 @@
+GroupName,GroupDescription,AUName,RoleName,MemberUPN
+GRP-Delegate-HelpdeskAdmin-Grade01-Coordinator,Helpdesk Admin delegation for Grade 01 Coordinator,AU-CloudSchool-Grade-01,Helpdesk Administrator,arun.nambiar@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade01-A-Coordinator,Helpdesk Admin delegation for Grade 01 Division A Coordinator,AU-CloudSchool-Grade-01-A,Helpdesk Administrator,arun.nambiar@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade02-Coordinator,Helpdesk Admin delegation for Grade 02 Coordinator,AU-CloudSchool-Grade-02,Helpdesk Administrator,manu.narayanan@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade02-A-Coordinator,Helpdesk Admin delegation for Grade 02 Division A Coordinator,AU-CloudSchool-Grade-02-A,Helpdesk Administrator,manu.narayanan@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade03-Coordinator,Helpdesk Admin delegation for Grade 03 Coordinator,AU-CloudSchool-Grade-03,Helpdesk Administrator,aparna.rajan@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade03-A-Coordinator,Helpdesk Admin delegation for Grade 03 Division A Coordinator,AU-CloudSchool-Grade-03-A,Helpdesk Administrator,aparna.rajan@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade04-Coordinator,Helpdesk Admin delegation for Grade 04 Coordinator,AU-CloudSchool-Grade-04,Helpdesk Administrator,rakesh.sharma@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade04-A-Coordinator,Helpdesk Admin delegation for Grade 04 Division A Coordinator,AU-CloudSchool-Grade-04-A,Helpdesk Administrator,rakesh.sharma@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade05-Coordinator,Helpdesk Admin delegation for Grade 05 Coordinator,AU-CloudSchool-Grade-05,Helpdesk Administrator,asha.ramesh@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade05-A-Coordinator,Helpdesk Admin delegation for Grade 05 Division A Coordinator,AU-CloudSchool-Grade-05-A,Helpdesk Administrator,asha.ramesh@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade06-Coordinator,Helpdesk Admin delegation for Grade 06 Coordinator,AU-CloudSchool-Grade-06,Helpdesk Administrator,neethu.thomas@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade06-A-Coordinator,Helpdesk Admin delegation for Grade 06 Division A Coordinator,AU-CloudSchool-Grade-06-A,Helpdesk Administrator,neethu.thomas@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade01-B-Teacher,Helpdesk Admin delegation for Grade 01 Division B Teacher,AU-CloudSchool-Grade-01-B,Helpdesk Administrator,divya.prasad@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade01-C-Teacher,Helpdesk Admin delegation for Grade 01 Division C Teacher,AU-CloudSchool-Grade-01-C,Helpdesk Administrator,preethi.nair@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade02-B-Teacher,Helpdesk Admin delegation for Grade 02 Division B Teacher,AU-CloudSchool-Grade-02-B,Helpdesk Administrator,kavya.suresh@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade02-C-Teacher,Helpdesk Admin delegation for Grade 02 Division C Teacher,AU-CloudSchool-Grade-02-C,Helpdesk Administrator,ananya.krishnan@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade03-B-Teacher,Helpdesk Admin delegation for Grade 03 Division B Teacher,AU-CloudSchool-Grade-03-B,Helpdesk Administrator,reshma.nair@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade03-C-Teacher,Helpdesk Admin delegation for Grade 03 Division C Teacher,AU-CloudSchool-Grade-03-C,Helpdesk Administrator,roshan.mathew@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade04-B-Teacher,Helpdesk Admin delegation for Grade 04 Division B Teacher,AU-CloudSchool-Grade-04-B,Helpdesk Administrator,keerthi.pillai@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade04-C-Teacher,Helpdesk Admin delegation for Grade 04 Division C Teacher,AU-CloudSchool-Grade-04-C,Helpdesk Administrator,sidharth.menon@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade05-B-Teacher,Helpdesk Admin delegation for Grade 05 Division B Teacher,AU-CloudSchool-Grade-05-B,Helpdesk Administrator,aishwarya.pillai@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade05-C-Teacher,Helpdesk Admin delegation for Grade 05 Division C Teacher,AU-CloudSchool-Grade-05-C,Helpdesk Administrator,swetha.balakrishnan@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade06-B-Teacher,Helpdesk Admin delegation for Grade 06 Division B Teacher,AU-CloudSchool-Grade-06-B,Helpdesk Administrator,shruthi.nair@cloudschool.ink
+GRP-Delegate-HelpdeskAdmin-Grade06-C-Teacher,Helpdesk Admin delegation for Grade 06 Division C Teacher,AU-CloudSchool-Grade-06-C,Helpdesk Administrator,fathima.rahman@cloudschool.ink
