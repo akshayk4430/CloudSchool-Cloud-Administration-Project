@@ -1,0 +1,12 @@
+PrincipalName,PrincipalType,RoleDefinitionName,ScopeType,ScopeName
+AkshayKattoth@CloudSchoolLabs.onmicrosoft.com,User,Owner,Subscription,CloudSchool-Prod-Subscription
+vishnu.prakash@cloudschool.ink,User,Owner,Subscription,CloudSchool-Prod-Subscription
+GRP-Staff-IT,Group,Contributor,ResourceGroup,RG-Compute-Prod
+GRP-Staff-IT,Group,Contributor,ResourceGroup,RG-Network-Prod
+GRP-Staff-IT,Group,Contributor,ResourceGroup,RG-Storage-Prod
+GRP-Staff-IT,Group,Contributor,ResourceGroup,RG-Monitoring-Prod
+GRP-Staff-IT,Group,Contributor,ResourceGroup,RG-Compute-Dev
+GRP-Staff-IT,Group,Contributor,ResourceGroup,RG-Network-Dev
+GRP-Staff-Management,Group,Reader,Subscription,CloudSchool-Prod-Subscription
+GRP-Staff-Accounts,Group,Reader,ResourceGroup,RG-Monitoring-Prod
+GRP-Staff-Operations,Group,Reader,ResourceGroup,RG-Compute-Prod
