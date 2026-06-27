@@ -1,0 +1,3 @@
+GroupName,GroupDescription,SkuPartNumber,SkuFriendlyName,SkuId,TargetUserType,Notes
+GRP-M365-License-Students,All Students,STANDARDWOFFPACK_STUDENT,Office 365 A1 for Students,314c4481-f395-4525-be8b-2ec4bb1e9d91,Student,Free EDU license - web Office apps + Teams + SharePoint + OneDrive
+GRP-M365-License-Staff,All Staff,M365EDU_A3_FACULTY,Microsoft 365 A3 for Faculty,4b590615-0888-425a-a965-b3bf7789848d,Faculty,Paid EDU license - full desktop Office apps + advanced security + Intune
