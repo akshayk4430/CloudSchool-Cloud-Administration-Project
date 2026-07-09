@@ -1,0 +1,2 @@
+StorageAccountName,ResourceGroupName,Location,SkuName,Kind,AccessTier,EnableHttpsTrafficOnly,MinimumTlsVersion,AllowBlobPublicAccess,EnableHierarchicalNamespace,Environment,Project
+stcloudschoolprod001,RG-Storage-Prod,uaenorth,Standard_LRS,StorageV2,Hot,TRUE,TLS1_2,FALSE,FALSE,Prod,CloudSchool
