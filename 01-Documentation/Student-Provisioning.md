@@ -83,7 +83,7 @@ Get-MgUser -Filter "userPrincipalName eq '<UPN>'"
 
 | Condition                  | Action                         |
 | -------------------------- | ------------------------------ |
-| User not found             | Create *(not implemented yet)* |
+| User not found             | Create                          |
 | User exists but mismatched | Update                         |
 | User exists and matches    | Skip                           |
 

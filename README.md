@@ -248,7 +248,7 @@ Policy assignment:
 Automation:
 
 - Script: `02-Scripts/12-assign-allowed-location-policy.ps1`
-- Documentation: `01-Documentation/12-Azure-Policy-Governance.md`
+- Documentation: `01-Documentation/Azure-Policy-Governance.md`
 - Idempotent execution
 - Supports `-WhatIf`
 - Checks for existing assignment before creation
