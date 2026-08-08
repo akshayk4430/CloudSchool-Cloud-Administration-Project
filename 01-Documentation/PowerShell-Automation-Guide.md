@@ -2,7 +2,7 @@
 
 ## Objective
 
-This document explains how PowerShell is used to automate the CloudSchool environment end to end — identity and group management in Microsoft Entra ID via the Microsoft Graph SDK (scripts 01–06, 08–09, 13, 15), and Azure infrastructure via the Az module (scripts 07, 10–12, 14, 16).
+This document explains how PowerShell is used to automate the CloudSchool environment end to end — identity and group management in Microsoft Entra ID via the Microsoft Graph SDK (scripts 01–06, 08–09, 13, 15), and Azure infrastructure via the Az module (scripts 07, 10–12, 14, 16–17).
 
 ---
 
@@ -177,7 +177,7 @@ Output:
 ### 10-connect-AzAccount.ps1
 
 * Connects to Azure using `Connect-AzAccount -TenantId`
-* Required before running any other Az module script (07, 11, 12, 14, 16)
+* Required before running any other Az module script (07, 11, 12, 14, 16, 17)
 
 ---
 
@@ -208,8 +208,10 @@ Output:
 ### 14-assign-rbac-roles.ps1
 
 * Reads `rbac-assignments.csv`
-* Assigns Azure RBAC roles (Owner, Contributor, Reader) to users/groups at subscription or resource group scope
+* Assigns Azure RBAC roles to users/groups at subscription, resource group, or resource scope
+* `ScopeType = Resource` uses the full resource ID held in `ScopeName`, validated with `Get-AzResource` before assignment
 * Idempotent — checks existing role assignments before creating new ones
+* Output filename is timestamped so run history is preserved
 
 ---
 
@@ -228,6 +230,17 @@ Output:
 * Two-step create-then-configure pattern (`AllowBlobPublicAccess` only settable via `Set-AzStorageAccount`)
 * Applies tags, TLS 1.2 minimum, HTTPS enforcement, HNS setting (creation-time only)
 * See `Storage-Account-Design-and-Implementation.md` for full detail
+
+---
+
+### 17-create-blob-containers.ps1
+
+* Reads `blob-containers.csv` and `blob-service-properties.csv`
+* Applies blob and container soft delete via `Enable-AzStorageBlobDeleteRetentionPolicy` and `Enable-AzStorageContainerDeleteRetentionPolicy` — note that `Update-AzStorageBlobServiceProperty` does not expose soft delete parameters in Az.Storage 9.6.0
+* Creates blob containers using a data-plane context bound to the signed-in Entra identity (`New-AzStorageContext -UseConnectedAccount`), not account keys
+* Requires `Storage Blob Data Contributor` on the storage account — control-plane roles such as Owner grant no data-plane access
+* Idempotent — checks with `Get-AzStorageContainer` before creating, and normalises a null `PublicAccess` to `Off` to avoid false drift
+* See `Blob-Storage-Design-and-Implementation.md` for full detail
 
 ---
 
