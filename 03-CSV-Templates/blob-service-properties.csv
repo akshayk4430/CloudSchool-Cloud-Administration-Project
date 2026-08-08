@@ -1,0 +1,2 @@
+StorageAccountName,ResourceGroupName,BlobSoftDeleteEnabled,BlobSoftDeleteRetentionDays,ContainerSoftDeleteEnabled,ContainerSoftDeleteRetentionDays
+stcloudschoolprod001,RG-Storage-Prod,True,7,True,7
