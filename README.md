@@ -19,6 +19,7 @@ The goal is to create a fully documented and automated cloud setup that reflects
 | Resource Groups      | Completed   |
 | Networking (VNet)    | Completed   |
 | Governance (Policy)  | Completed   |
+| Storage              | In progress |
 
 ---
 
@@ -253,11 +254,42 @@ Automation:
 - Supports `-WhatIf`
 - Checks for existing assignment before creation
 
+#### Storage
+
+Production storage account deployed:
+
+* Name: `stcloudschoolprod001`
+* Resource Group: `RG-Storage-Prod`
+* Kind: StorageV2 (GPv2), Standard LRS, Hot access tier
+* Blob public access disabled, TLS 1.2 minimum, HTTPS enforced
+
+Automation:
+
+- CSV-driven storage account configuration
+- Script: `02-Scripts/16-create-storage-account.ps1`
+- Two-step create-then-configure pattern (`AllowBlobPublicAccess` is not settable at creation time)
+
+Blob containers deployed:
+
+* `student-submissions`, `student-records`, `staff-resources`, `exam-papers`, `school-media`, `public-website`, `archive-alumni`
+* Container count driven by distinct RBAC boundaries, not organizational structure
+* Blob and container soft delete enabled at 7 days
+
+Automation:
+
+- CSV-driven container provisioning
+- Script: `02-Scripts/17-create-blob-containers.ps1`
+- Data-plane authentication via Entra ID identity (`-UseConnectedAccount`), not account keys
+- Idempotent execution (Created / AlreadyExists / Updated / Failed)
+
+---
+
 #### Design Principles
 
 * Environment isolation (Prod vs Dev)
 * Subnet-based workload segmentation
 * Azure-native architecture aligned with AZ-104
+* Separation of control plane and data plane permissions
 
 ---
 
