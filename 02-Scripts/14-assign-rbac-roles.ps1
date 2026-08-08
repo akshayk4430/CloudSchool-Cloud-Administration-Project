@@ -9,7 +9,8 @@
 # --- Paths ---
 $csvPath    = "$PSScriptRoot\..\03-CSV-Templates\rbac-assignments.csv"
 $outputDir  = "$PSScriptRoot\..\05-Outputs"
-$outputFile = "$outputDir\rbac-assignment-results.csv"
+$timestamp  = Get-Date -Format 'yyyyMMdd-HHmmss'
+$outputFile = "$outputDir\rbac-assignment-results-$timestamp.csv"
 
 # --- Validate CSV exists ---
 if (-not (Test-Path $csvPath)) {
@@ -126,6 +127,23 @@ Write-Host "`n--- Processing: $principalName | $roleName | ${scopeType}: $scopeN
         }
         $scope = $rg.ResourceId
     }
+	elseif ($scopeType -eq "Resource") {
+        $resource = Get-AzResource -ResourceId $scopeName -ErrorAction SilentlyContinue
+        if (-not $resource) {
+            Write-Warning "Resource '$scopeName' not found — skipping"
+            $results += [PSCustomObject]@{
+                PrincipalName      = $principalName
+                PrincipalType      = $principalType
+                RoleDefinitionName = $roleName
+                ScopeType          = $scopeType
+                ScopeName          = $scopeName
+                Status             = "Skipped"
+                Reason             = "Resource not found"
+            }
+            continue
+        }
+        $scope = $resource.ResourceId
+    }
     else {
         Write-Warning "Unknown ScopeType '$scopeType' for $principalName — skipping"
         $results += [PSCustomObject]@{
@@ -145,7 +163,7 @@ Write-Host "`n--- Processing: $principalName | $roleName | ${scopeType}: $scopeN
         -ObjectId $objectId `
         -RoleDefinitionName $roleName `
         -Scope $scope `
-        -ErrorAction SilentlyContinue
+        -ErrorAction SilentlyContinue | Where-Object { $_.Scope -eq $scope }
 
     if ($existing) {
         Write-Host "  Already exists — skipping" -ForegroundColor Green
