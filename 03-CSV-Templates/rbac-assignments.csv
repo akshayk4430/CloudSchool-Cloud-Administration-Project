@@ -10,3 +10,4 @@ GRP-Staff-IT,Group,Contributor,ResourceGroup,RG-Network-Dev
 GRP-Staff-Management,Group,Reader,Subscription,CloudSchool-Prod-Subscription
 GRP-Staff-Accounts,Group,Reader,ResourceGroup,RG-Monitoring-Prod
 GRP-Staff-Operations,Group,Reader,ResourceGroup,RG-Compute-Prod
+AkshayKattoth@CloudSchoolLabs.onmicrosoft.com,User,Storage Blob Data Contributor,Resource,/subscriptions/c3413eaf-14ab-4e84-b15f-16b13a063b64/resourceGroups/RG-Storage-Prod/providers/Microsoft.Storage/storageAccounts/stcloudschoolprod001
