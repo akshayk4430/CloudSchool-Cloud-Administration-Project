@@ -1,0 +1,6 @@
+ShareName,StorageAccountName,ResourceGroupName,QuotaGiB,AccessTier
+staff-shared,stcloudschoolprod001,RG-Storage-Prod,100,Hot
+it-department,stcloudschoolprod001,RG-Storage-Prod,100,TransactionOptimized
+accounts-department,stcloudschoolprod001,RG-Storage-Prod,50,Hot
+school-templates,stcloudschoolprod001,RG-Storage-Prod,50,Cool
+student-workspace,stcloudschoolprod001,RG-Storage-Prod,200,Hot
