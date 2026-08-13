@@ -1,4 +1,4 @@
-$shares = Import-Csv -Path "G:\CloudSchool-Cloud-Administration-Project\03-CSV-Templates\file-shares.csv"
+$shares = Import-Csv -Path ".\03-CSV-Templates\file-shares.csv"
 
 $existingShares = @('staff-shared', 'school-templates')
 $results = @()
@@ -20,4 +20,4 @@ foreach ($share in $shares) {
 }
 
 $results | Format-Table
-$results | Export-Csv -Path "G:\CloudSchool-Cloud-Administration-Project\05-Outputs\t12-file-shares-dryrun.csv"
+$results | Export-Csv -Path ".05-Outputs\t12-file-shares-dryrun.csv"
