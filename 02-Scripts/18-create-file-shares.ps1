@@ -14,6 +14,7 @@ if ($context.Subscription.Id -ne $expectedSubscriptionId) {
 $shares = Import-Csv -Path ".\03-CSV-Templates\file-shares.csv"
 $results = @()
 foreach ($share in $shares) {
+    $shareObject = $null
     $existingShare = Get-AzRmStorageShare `
         -Name $share.ShareName `
         -ResourceGroupName $share.ResourceGroupName `
@@ -27,13 +28,21 @@ foreach ($share in $shares) {
     }
     else {
         Write-Host "$($share.ShareName) is not available"
-        $shareObject = New-AzRmStorageShare `
-            -ResourceGroupName $share.ResourceGroupName `
-            -StorageAccountName $share.StorageAccountName `
-            -Name $share.ShareName `
-            -QuotaGiB ([int]$share.QuotaGiB) `
-            -AccessTier $share.AccessTier
-        $status = "Created"       
+        try {
+            $shareObject = New-AzRmStorageShare `
+                -ResourceGroupName $share.ResourceGroupName `
+                -StorageAccountName $share.StorageAccountName `
+                -Name $share.ShareName `
+                -QuotaGiB ([int]$share.QuotaGiB) `
+                -AccessTier $share.AccessTier `
+                -ErrorAction Stop
+            $status = "Created"
+        }
+        catch {
+            Write-Warning "Failed to create $($share.ShareName) : $($_.Exception.Message)"
+            $status = "Failed"
+        }
+                   
     }
     $results += [PSCustomObject]@{
         ShareName  = $share.ShareName
