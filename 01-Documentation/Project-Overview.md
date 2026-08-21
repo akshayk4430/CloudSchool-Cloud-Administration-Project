@@ -111,6 +111,7 @@ Script and documentation filenames are not required to match numerically — thi
 | T9 | License assignment (WhatIf, group-based) | `15-assign-licenses.ps1` | `License-Assignment-Design-and-Implementation.md` |
 | T10 | Storage Account | `16-create-storage-account.ps1` | `Storage-Account-Design-and-Implementation.md` |
 | T11 | Blob Storage (7 containers, soft delete) | `17-create-blob-containers.ps1` | `Blob-Storage-Design-and-Implementation.md` |
+| T12 | File Storage (5 SMB Shares, tiered by usage) | `18-create-file-shares.ps1` | `File-Share-Design-and-Implementation.md` |
 | — | Graph connection (shared utility) | `01-connect-mggraph.ps1` | `PowerShell-Automation-Guide.md` |
 | — | Azure connection (shared utility) | `10-connect-AzAccount.ps1` | `PowerShell-Automation-Guide.md` |
 | — | Resource Group creation (infra foundation) | `07-create-resource-groups.ps1` | `Resource-Group-Design.md` |
@@ -118,13 +119,13 @@ Script and documentation filenames are not required to match numerically — thi
 | — | Azure Policy / governance | `12-assign-allowed-location-policy.ps1` | `Azure-Policy-Governance.md` |
 | — | Fixes and lessons learned across tasks | — | `Troubleshooting-and-Fixes.md` |
 
-**Remaining tasks (T12–T30)** are tracked in the main `README.md` roadmap table and do not yet have scripts or documentation.
+**Remaining tasks (T13–T30)** are tracked in the main `README.md` roadmap table and do not yet have scripts or documentation.
 
 ---
 
 ## 📈 Current Status
 
-**Completed (T1–T11):**
+**Completed (T1–T12):**
 
 - Custom domain setup (cloudschool.ink)
 - Student provisioning (500 users)
@@ -137,16 +138,33 @@ Script and documentation filenames are not required to match numerically — thi
 - License assignment (group-based, WhatIf simulation — Education SKUs)
 - Storage Account (`stcloudschoolprod001`, Standard GPv2, LRS, Hot tier)
 - Blob Storage (7 containers, blob and container soft delete at 7 days, Entra ID data-plane authentication)
+- Azure File Shares (5 SMB shares on the file service, access tiers assigned by usage pattern, management-plane provisioning with no account keys)
 
-**In progress:** none currently — T11 is complete; T12 (File Share) is next.
+**In progress:** none — T12 complete.
+
+**Next:** T10.1 — enforce blob and file service soft delete via
+`16-create-storage-account.ps1` and `storage-accounts.csv` (own branch),
+then T13 — Access Tiers.
 
 ---
+## Known Gaps and Backlog
 
-## 🔜 Next Steps
+- **T10.1** — Blob and file service soft delete are at Azure defaults, not
+  enforced by script. Tracked for its own branch.
+- **Script 18** — No row-count check after CSV import; an empty CSV would run
+  silently with no output and no warning.
+- **T11** — A `$logs` container appeared on the storage account during T11;
+  origin not yet confirmed.
+- **Config refactor** — Tenant and subscription IDs are hardcoded per script.
+  A shared `00-config.ps1` is planned at T13.
+  
+  
 
-Remaining roadmap (T12–T30), grouped by AZ-104 domain:
+## 🔜 Remaining Roadmap
 
-- **Storage (T12–T14):** File Share, Access Tiers, Storage Access (private endpoints)
+Remaining roadmap (T13–T30), grouped by AZ-104 domain:
+
+- **Storage (T13–T14):** Access Tiers, Storage Access (private endpoints)
 - **Compute (T15–T20):** Windows VM, Linux VM, VM Configuration, Azure Bastion, VM Extensions, Containers
 - **Networking (T21–T25):** NSGs, VNet Peering, Private DNS, Azure Bastion, Load Balancer
 - **Monitoring (T26–T30):** Azure Monitor, Log Analytics, Diagnostics Settings, Cost Management, Azure Backup
